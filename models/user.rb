@@ -78,6 +78,11 @@ class User
       User.create_with( "admin", "greencheese", "kaineer@gmail.com" )
     end
   end
+  def self.ensure_demo_existance
+    unless User.first( :login.eql => "demo" )
+      User.create_with( "demo", "demo", "noreply@somewhere.no" )
+    end
+  end
 end
 
 class User
