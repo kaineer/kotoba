@@ -25,3 +25,4 @@ DataMapper::AutoMigrator.auto_upgrade
 
 User.ensure_admin_existance
 User.ensure_demo_existance
+
