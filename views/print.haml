@@ -1,0 +1,11 @@
+%table{:class=>"print_bookmarks"}
+  %tr
+    %th{:width=>"100px"} Kanji
+    %th{:width=>"100px"} Reading
+    %th{:width=>"400px"} Meaning
+  - @bookmarks.each do |bmk|
+    - tango = Tango[ bmk.tango_id ]
+    %tr
+      %td= tango.kanji
+      %td= tango.kana
+      %td= tango.meaning

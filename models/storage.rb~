@@ -1,0 +1,26 @@
+class FileStorage
+  def initialize( filename )
+    @value = {}
+    @filename = filename
+    initialize_from_file
+  end
+
+  def initialize_from_file
+    @value = eval( IO.read( @filename ) ) if File.exist?( @filename )
+  end
+
+  def keep_value
+    of = File.new( @filename, "w" )
+    of.write( @value.inspect )
+    of.close
+  end
+
+  def []=( key, value )
+    @value[ key ] = value
+    keep_value
+  end
+
+  def []( key )
+    @value[ key ]
+  end
+end

@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  
+}
+
+div#container {
+  border: solid 1px #BCD3E0;
+  width: 500px;
+  margin: 2px;
+}
+
+div#title {
+  width: 500px;
+  margin: 0;
+  background-color: #EBF5FB;
+  padding: 0px;
+  font-size: 42px;
+}
+
+#title a {
+  text-decoration: none;
+}
+
+#title a:hover {
+  color: #000;
+}
+
+div#spoilers {
+  width: 500px;
+  margin: 0;
+  padding: 0px;
+  font-size: 18px;
+}
+
+div#spoilers table {
+  border: 0;
+  border-collapse: collapse;
+}
+
+div#spoilers td {
+  border: solid 1px #EBF5FB;
+  padding: 1px 4px;
+}
+
+div#spoilers td.right {
+  text-align: right;
+}
+
+div#spoilers td.spoiler {
+  color: #ffffff;
+  background-color: #ffffff;
+}
+
+div#spoilers td.spoiler:hover {
+  color: #3A5A83;
+  background-color: #ffffff;
+}
+
+div#history {
+  font-size: 14px;
+}
+
+div#login {
+  text-align: right;
+  background-color: #EBF5FB;
+}
+
+div#login a, div#login span, div#notice, div#bookmarks {
+  font: 10px tahoma, verdana, sans-serif;
+}
+
+div#login input {
+  font: 10px tahoma, verdana, sans-serif;
+}
+
+div#login div {
+  padding: 2px;
+}
+
+div#login input {
+  font: 12px;
+  height: 14px;
+  border: solid 1px #BCD3E0;
+}
+
+div#notice {
+  background-color: #C3FDC5;
+}
+
+div#history {
+  padding: 2px;
+}
+
+div#bookmarks {
+  background-color: #EBF5FB;
+  padding: 2px;
+}

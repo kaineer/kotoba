@@ -1,0 +1,8 @@
+#
+require 'md5'
+
+class Authentication
+  def self.authenticate?( user, password )
+    user.password == garble( password )
+  end
+end

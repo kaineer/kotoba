@@ -1,0 +1,13 @@
+#
+def flash
+  session[ :flash ] = {} if session[ :flash ] && session[ :flash ].class != Hash
+  session[ :flash ] ||= {}
+end
+
+#
+def render( method, *args )
+  html = self.__send__( method, *args )
+  flash.clear
+  html
+end
+
