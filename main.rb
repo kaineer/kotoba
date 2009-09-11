@@ -6,6 +6,7 @@ require 'yaml'
 require 'haml'
 
 require 'models'
+Models.startup
 
 enable :sessions
 
@@ -22,27 +23,11 @@ def custom_render( method, *args )
   html
 end
 
-def tango_url( tango_id )
-  "/tango/#{tango_id||0}"
-end
-
-def bookmark_url( tango_id = 0 )
-  "/bookmark/#{tango_id}"
-end
-
-def print_bookmarks_url
-  "/print"
-end
-
-def clear_bookmarks_url
-  "/clear"
-end
-
 def user_path
-  path = tango_url( 0 )
+  path = Url.tango
   score = UserScore.find_or_create( User.current_id )
   if score && score.tango_id
-    path = tango_url( score.tango_id )
+    path = Url.tango( score.tango_id )
   end
 
   path
@@ -65,14 +50,14 @@ post "/login" do
     flash[ :notice ] = "User logged in"
   end
 
-  redirect user_path
+  redirect Url.user
 end
 
 get "/logout" do
   User.logout
   Visited.clear
   flash[ :notice ] = "User logged out"
-  redirect tango_url( 0 )
+  redirect Url.tango
 end
 
 get "/tango/:id" do
@@ -100,7 +85,7 @@ get "/bookmark/:id" do
 
   @user.mark( @tango.index )
 
-  redirect tango_url( @tango.index )
+  redirect Url.tango( @tango.index )
 end
 
 get "/print" do
@@ -111,12 +96,10 @@ get "/print" do
 end
 
 get "/clear" do
-  @user = User.current
-  @user.clear_bookmarks
-  
-  redirect user_path
+  User.current.clear_bookmarks rescue nil
+  redirect Url.user
 end
 
 get "/" do
-  redirect user_path
+  redirect Url.user
 end

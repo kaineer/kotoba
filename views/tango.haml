@@ -4,16 +4,16 @@
   #title
     -if @tango.prev
       %sup
-        %a{:href=>tango_url(@tango.prev.index), :title=>"#{Words::PREVIOUS}"}= @tango.prev.kanji
+        %a{:href=>Url.tango(@tango.prev.index), :title=>"#{Words::PREVIOUS}"}= @tango.prev.kanji
     %span{:title=>"#{@tango.index}"}= @tango.kanji
     %sup
-      %a{:href=>tango_url( @tango.next.index ), :title=>Words::NEXT}= @tango.next.kanji
+      %a{:href=>Url.tango( @tango.next.index ), :title=>Words::NEXT}= @tango.next.kanji
   - if @user
     #controls
       = "Bookmarks: "
-      %a{:href=>bookmark_url( @tango.index )}= "Add"
-      %a{:href=>print_bookmarks_url}= "Print"
-      %a{:href=>clear_bookmarks_url}= "Clear"
+      %a{:href=>Url.bookmark( @tango.index )}= "Add"
+      %a{:href=>Url.print_bookmarks}= "Print"
+      %a{:href=>Url.clear_bookmarks}= "Clear"
   #spoilers
     %table{:width=>'100%'}
       %tr
@@ -28,7 +28,7 @@
         -if @tango.index == hid
           = @tango.kanji
         -else
-          %a{:href=>tango_url( hid )}= Tango[hid].kanji
+          %a{:href=>Url.tango( hid )}= Tango[hid].kanji
   - if @user
     #bookmarks
       - unless @bookmarks.empty?
