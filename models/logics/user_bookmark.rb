@@ -1,0 +1,7 @@
+#
+#
+#
+#
+#
+class UserBookmark
+end
