@@ -10,6 +10,13 @@ module Models
     DataMapper::AutoMigrator.auto_upgrade
   end
 
+  def self.reset
+    datamapper_startup
+    require_from( "models/scheme" )
+
+    DataMapper.auto_migrate!
+  end
+
   def self.startup
     migrate
     in_memory_logic

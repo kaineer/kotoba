@@ -5,33 +5,16 @@ require 'sinatra'
 require 'yaml'
 require 'haml'
 
+
+require 'rack-flash'
+
 require 'models'
 Models.startup
 
 enable :sessions
 
-#
-def flash
-  session[ :flash ] = {} if session[ :flash ] && session[ :flash ].class != Hash
-  session[ :flash ] ||= {}
-end
+use Rack::Flash
 
-#
-def custom_render( method, *args )
-  html = self.__send__( method, *args )
-  flash.clear
-  html
-end
-
-def user_path
-  path = Url.tango
-  score = UserScore.find_or_create( User.current_id )
-  if score && score.tango_id
-    path = Url.tango( score.tango_id )
-  end
-
-  path
-end
 
 #
 before do
@@ -76,7 +59,7 @@ get "/tango/:id" do
     @bookmarks = @user.user_bookmarks
   end
 
-  custom_render :haml, :tango
+  haml :tango
 end
 
 get "/bookmark/:id" do
@@ -92,7 +75,7 @@ get "/print" do
   @user = User.current
   @bookmarks = @user.user_bookmarks.sort_by{|b|b.tango_id}
 
-  custom_render :haml, :print
+  haml :print
 end
 
 get "/clear" do
