@@ -1,2 +1,2 @@
-nakajima-rack-flash --version 0.1.0
-dm-core --version 0.9.10
+nakajima-rack-flash --version 0.1.0 --source gems.github.com
+
