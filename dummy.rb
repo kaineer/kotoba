@@ -7,8 +7,8 @@ def test_pony
               :port   => '587',
               :tls    => true,
               :user   => 'kaineer',
-              :pass   => 'herahbless',
-              :auth   => :plain # :plain, :login, :cram_md5, no auth by default
+              :pass   => 'kerahbless',
+              :auth   => :plain, # :plain, :login, :cram_md5, no auth by default
               :domain => "localhost.localdomain" # the HELO domain provided by the client to the server
             })
 end
