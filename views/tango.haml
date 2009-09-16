@@ -11,7 +11,7 @@
   - if @user
     #controls
       = "Bookmarks: "
-      %a{:href=>Url.bookmark( @tango.index )}= "Add"
+      %a{:href=>Url.bookmark_set( @tango.index )}= "Add"
       %a{:href=>Url.print_bookmarks}= "Print"
       %a{:href=>Url.clear_bookmarks}= "Clear"
   #spoilers
@@ -37,8 +37,11 @@
             %th Kanji
             %th	Reading
             %th	Meaning
+            %th	    
           - @bookmarks.each do |bkm|
             %tr
               %td{:width=>"50px"}= Tango[bkm.tango_id].kanji
               %td{:width=>"70px"}= Tango[bkm.tango_id].kana
               %td= Tango[bkm.tango_id].meaning
+              %td{:width=>"1px"}
+                %a{:href=>Url.bookmark_unset(bkm.tango_id),:title=>"Remove"} x

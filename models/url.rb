@@ -9,8 +9,12 @@ module Url
     "/tango/#{id}"
   end
 
-  def self.bookmark( id = 0 )
-    "/bookmark/#{id}"
+  def self.bookmark_set( id = 0 )
+    "/bookmark/#{id}/set"
+  end
+
+  def self.bookmark_unset( id = 0 )
+    "/bookmark/#{id}/unset"
   end
 
   def self.print_bookmarks
