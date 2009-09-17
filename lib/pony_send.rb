@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'pony'
-require File.join( File.dirname( __FILE__ ), 'smtp_tls' )
+# require File.join( File.dirname( __FILE__ ), 'smtp_tls' )
 
 def send_pony( to, subj, body )
   Pony.mail(
