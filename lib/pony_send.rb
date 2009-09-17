@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'pony'
-# require File.join( File.dirname( __FILE__ ), 'smtp_tls' )
+require File.join( File.dirname( __FILE__ ), 'smtp_tls' )
 
 def send_pony( to, subj, body )
   Pony.mail(
@@ -8,6 +8,7 @@ def send_pony( to, subj, body )
             :from => "kaineer@gmail.com",
             :subject => subj,
             :body => body,
+            :via => :smtp,
             :smtp =>
             {
               :address => "smtp.gmail.com",
