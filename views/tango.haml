@@ -11,7 +11,7 @@
   - if @user
     #controls
       = "Bookmarks: "
-      %a{:href=>Url.bookmark( @tango.index )}= "Add"
+      %a{:href=>Url.bookmark_set( @tango.index )}= "Add"
       %a{:href=>Url.print_bookmarks}= "Print"
       %a{:href=>Url.clear_bookmarks}= "Clear"
   #spoilers
@@ -32,13 +32,4 @@
   - if @user
     #bookmarks
       - unless @bookmarks.empty?
-        %table{:width=>"100%"}
-          %tr
-            %th Kanji
-            %th	Reading
-            %th	Meaning
-          - @bookmarks.each do |bkm|
-            %tr
-              %td{:width=>"50px"}= Tango[bkm.tango_id].kanji
-              %td{:width=>"70px"}= Tango[bkm.tango_id].kana
-              %td= Tango[bkm.tango_id].meaning
+        = haml( :bookmarks, :layout => false )
