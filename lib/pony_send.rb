@@ -15,7 +15,7 @@ def send_pony( to, subj, body )
               :port => "587",
               :domain => "localhost.localdomain",
               :authentication => :plain,
-              :user_name => "kaineer@gmail.com",
+              :user_name => "kaineer",
               :password => 'kerahbless'
             } )
 end
