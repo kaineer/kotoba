@@ -8,7 +8,6 @@ def send_pony( to, subj, body )
             :from => "kaineer@gmail.com",
             :subject => subj,
             :body => body,
-            :via => "smtp",
             :smtp =>
             {
               :address => "smtp.gmail.com",
