@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'pony'
 
+#
 def test_pony
   Pony.mail(:to => 'kaineer@gmail.com', :via => :smtp, :smtp => {
               :host     => 'smtp.gmail.com',
