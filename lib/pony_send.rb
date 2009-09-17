@@ -14,7 +14,7 @@ def send_pony( to, subj, body )
               :address => "smtp.gmail.com",
               :port => 587,
               :authentication => :plain,
-              :user_name => "kaineer@gmail.com",
+              :user => "kaineer@gmail.com",
               :password => 'kerahbless'
             } )
 end
