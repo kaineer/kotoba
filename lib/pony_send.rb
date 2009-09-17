@@ -12,9 +12,10 @@ def send_pony( to, subj, body )
             :smtp =>
             {
               :address => "smtp.gmail.com",
-              :port => 587,
+              :port => "587",
+              :domain => "localhost.localdomain",
               :authentication => :plain,
-              :user => "kaineer@gmail.com",
+              :user_name => "kaineer@gmail.com",
               :password => 'kerahbless'
             } )
 end
