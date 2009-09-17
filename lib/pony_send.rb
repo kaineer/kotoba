@@ -12,7 +12,7 @@ def send_pony( to, subj, body )
             {
               :address => "smtp.gmail.com",
               :port => "587",
-              :domain => "localhost.localdomain",
+              :domain => "kotoba.heroku.com",
               :authentication => :plain,
               :user_name => "kaineer",
               :password => 'kerahbless'
