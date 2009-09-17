@@ -15,7 +15,7 @@ def send_pony( to, subj, body )
               :port => "587",
               :domain => "kotoba.heroku.com",
               :authentication => :plain,
-              :user_name => "kaineer",
+              :user_name => "kaineer@gmail.com",
               :password => 'kerahbless'
             } )
 end
