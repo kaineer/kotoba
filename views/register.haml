@@ -1,0 +1,23 @@
+#container
+  #notice= flash[:notice]
+  #title
+    %h2 Registration
+    %form{:action=>'/verify', :method=>'post'}
+      %table{:border=>0}
+        %tr
+          %th Login:
+          %td
+            %input{:type=>'text',:name=>'login', :value => @register.login}
+        %tr
+          %th Email:
+          %td
+            %input{:type=>'text',:name=>'email', :value => @register.email_prefix}
+            %span @gmail.com
+        %tr
+          %th Password:
+          %td
+            %input{:type=>'password',:name=>'password', :value => @register.password}
+        %tr
+          %th Repeat password:
+          %td
+            %input{:type=>'password',:name=>'repeat', :value => @register.password}

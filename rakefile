@@ -4,6 +4,10 @@
 #
 #
 
+task :default do
+  ruby "main.rb"
+end
+
 namespace :db do
   task :scheme do
     require 'models'

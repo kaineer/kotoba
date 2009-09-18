@@ -21,6 +21,10 @@ class User
     user_id ? User.get!( self.current_id ) : nil
   end
 
+  def self.admin?
+    User.logged_in? && User.current.admin?
+  end
+
   def self.logged_in?
     self.current
   end
@@ -50,10 +54,11 @@ class User
     user ? user.login : nil
   end
 
-  def self.create_with( login, password, email )
+  def self.create_with( login, password, email, admin = false )
     User.create( :login => login, 
                  :password => Authentication.garble( login + password ), 
-                 :email => email )
+                 :email => email,
+                 :admin => admin )
   end
 
   def self.validate_username?( login )
@@ -67,9 +72,10 @@ class User
 
   def self.ensure_admin_existance
     unless self.find_admin
-      User.create_with( "admin", "greencheese", "kaineer@gmail.com" )
+      User.create_with( "admin", "greencheese", "kaineer@gmail.com", true )
     end
   end
+
   def self.ensure_demo_existance
     unless User.first( :login.eql => "demo" )
       User.create_with( "demo", "demo", "noreply@somewhere.no" )
@@ -96,5 +102,9 @@ class User
     self.user_bookmarks.all.each do |bmk|
       bmk.destroy
     end
+  end
+
+  def admin?
+    self.admin
   end
 end

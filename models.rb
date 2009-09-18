@@ -27,12 +27,13 @@ module Models
     default_users
   end
 
-protected
-  FILES = [ "user", "user_score", "user_bookmark" ]
+  FILES = [ "user", "user_score", "user_bookmark", "user_registration" ]
 
   def self.require_from( dir )
     FILES.each do |name|
-      require File.join( dir, name )
+      filename = File.join( dir, name )
+      puts "Loading from #{filename}.."
+      require filename
     end
   end
 

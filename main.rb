@@ -12,7 +12,6 @@ require 'models'
 Models.startup
 
 enable :sessions
-
 use Rack::Flash
 
 
@@ -21,27 +20,7 @@ before do
   Session.instance = session
 end
 
-post "/login" do
-  login    = params[ "login" ]
-  password = params[ "password" ]
-
-  User.login( login, password )
-
-  current_name = User.current.login rescue nil
-
-  if login == current_name
-    flash[ :notice ] = "User logged in"
-  end
-
-  redirect Url.user
-end
-
-get "/logout" do
-  User.logout
-  Visited.clear
-  flash[ :notice ] = "User logged out"
-  redirect Url.tango
-end
+require 'controllers'
 
 get "/tango/:id" do
   @user = User.current

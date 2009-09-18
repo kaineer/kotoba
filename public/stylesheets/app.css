@@ -7,6 +7,11 @@ body {
   
 }
 
+h2 {
+  font-size: 16px;
+  padding-left: 4px;
+}
+
 div#container {
   border: solid 1px #BCD3E0;
   width: 500px;
@@ -69,6 +74,15 @@ div#history {
 div#login {
   text-align: right;
   background-color: #EBF5FB;
+}
+
+div#title td {
+  font: 10px tahoma, verdana, sans-serif;
+}
+
+div#title th {
+  font: bold 10px tahoma, verdana, sans-serif;
+  text-align: right;
 }
 
 div#login a, div#login span, div#notice, div#bookmarks, div#controls {

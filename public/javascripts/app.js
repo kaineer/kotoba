@@ -11,8 +11,10 @@ $( document ).ready( function() {
     } );
   } else {
     div.tag( "div", function( div ) {
-       div.tag( "span", "Hello, guest!&nbsp;" );
-       div.tag( "a", { href: "#", "class": "login" }, "login" );
+      div.tag( "span", "Hello, guest!&nbsp;" );
+      div.tag( "a", { href: "#", "class": "login" }, "login" );
+      div.tag( "span", "&nbsp;or&nbsp;" );
+      div.tag( "a", { href: "/register" }, "register" );
     } );
   }
 
@@ -30,7 +32,7 @@ $( document ).ready( function() {
     return false;
   } );
 
-  $( "#login input" ).live( "keypress", function( e ) {
+  $( "#login input, #title input" ).live( "keypress", function( e ) {
     if( e.which == 13 ) { $( "#login form" ).submit(); }
     return true;
   } );
