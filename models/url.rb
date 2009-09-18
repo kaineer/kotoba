@@ -31,7 +31,7 @@ module Url
   end
 
   def self.webmail( to, subj, body )
-    "http://mail.google.com/mail/?view=cm&fs=1&to=%s&su=%s&body=%s" % [ to, subj, body ]
+    "http://mail.google.com/mail/?view=cm&ui=1&fs=1&to=%s&su=%s&body=%s" % [ to, subj, body ]
   end
 
   def self.validation( hash )

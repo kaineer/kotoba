@@ -9,3 +9,4 @@ class UserRegistration
   property :verification, String
   property :created_at,   Time
 end
+

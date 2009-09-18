@@ -20,6 +20,14 @@ div#container {
   margin-top: 10px;
 }
 
+div#admin {
+  width: 500px;
+  margin: 0;
+  background-color: #EBF5FB;
+  padding: 0px;
+  font-size: 10px;
+}
+
 div#title {
   width: 500px;
   margin: 0;
@@ -76,10 +84,14 @@ div#login {
   background-color: #EBF5FB;
 }
 
+.message,
+div#admin td,
+div#registrations td,
 div#title td {
   font: 10px tahoma, verdana, sans-serif;
 }
 
+div#registrations th,
 div#title th {
   font: bold 10px tahoma, verdana, sans-serif;
   text-align: right;

@@ -1,6 +1,9 @@
 #container
   #notice= flash[:notice]
-  #login{:name=>User.username}
+  #login{:name=>User.current ? User.current.email : nil}
+  - if User.admin?
+    #admin
+      %a{:href=>"/admin/registrations"} Registrations
   #title
     -if @tango.prev
       %sup
