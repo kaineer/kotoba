@@ -56,7 +56,7 @@ module Models
   end
 
   def self.ensure_user_logic
-    require 'models/logic/user'
+    require 'models/logics/user'
   end
 
   def self.default_users

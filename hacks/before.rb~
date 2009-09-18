@@ -1,4 +1,0 @@
-#
-before do
-  Session.instance = session
-end

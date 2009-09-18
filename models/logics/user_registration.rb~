@@ -1,8 +1,0 @@
-#
-class UserRegistration
-  #
-  def create_from( register )
-    ur = UserRegistration.find( :login.eql => register.login )
-  end
-
-end

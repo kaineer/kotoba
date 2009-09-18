@@ -20,7 +20,7 @@ before do
   Session.instance = session
 end
 
-require 'controllers'
+load 'controllers.rb'
 
 get "/tango/:id" do
   @user = User.current

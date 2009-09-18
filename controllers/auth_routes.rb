@@ -7,13 +7,24 @@ enable :sessions
 use Rack::Flash
 
 
+before do
+  Session.instance = session
+end
+
 post "/login" do
+puts params.inspect
+puts Session.instance.inspect
+
   login    = params[ "login" ]
   password = params[ "password" ]
 
-  User.login( login, password )
+  foo = User.login( login, password )
+
+puts foo.inspect
 
   current_name = User.current.login rescue nil
+
+puts current_name.inspect
 
   if login == current_name
     flash[ :notice ] = "User logged in"

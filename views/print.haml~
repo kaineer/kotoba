@@ -1,6 +1,0 @@
-%table
-  - @bookmarks.each do |bmk|
-    %tr
-      %td= bmk.kanji
-      %td= bmk.kana
-      %td= bmk.meaning

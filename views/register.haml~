@@ -1,3 +1,0 @@
-#container
-  #login
-     %input{:type=>'text',:name=>'login'}

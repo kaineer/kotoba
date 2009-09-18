@@ -1,0 +1,15 @@
+#container
+  #registrations
+    %table{:width=>'100%'}
+      %tr
+        %th{:width=>'100%'} Email
+        %th
+        %th Verification code
+      - @registrations.each do |r|
+        %tr
+          %td= r.email
+          %td= r.verification
+          %td
+            %form{:action => '/admin/verify', :method => 'post'}
+              %input{:type=>'hidden', :name => 'email', :value => r.email}
+              %input{:type=>'text', :name=>'verification', :size => 32}

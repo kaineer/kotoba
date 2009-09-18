@@ -41,5 +41,5 @@ $( document ).ready( function() {
     /// TODO
   } );
 
-  $( "#bookmarks table tr:odd" ).addClass( "odd" );
+  $( "#bookmarks table tr:odd, #registrations table tr:odd" ).addClass( "odd" );
 } );

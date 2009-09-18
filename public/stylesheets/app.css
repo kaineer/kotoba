@@ -116,18 +116,22 @@ div#bookmarks {
   padding: 2px;
 }
 
+#registrations table,
 #bookmarks table {
   border-collapse: collapse;
 }
 
+#registrations td, #registrations th,
 #bookmarks td, #bookmarks th {
   padding: 2px;
 }
 
+#registrations tr,
 #bookmarks tr {
   background-color: #ABBDC8;
 }
 
+#registrations tr.odd,
 #bookmarks tr.odd {
   background-color: #C0D7E5;
 }

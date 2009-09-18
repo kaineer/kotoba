@@ -1,3 +1,3 @@
 #
-require 'controllers/auth_routes'
-require 'controllers/admin_routes'
+load 'controllers/auth_routes.rb'
+load 'controllers/admin_routes.rb'
