@@ -12,7 +12,7 @@ class Authentication
 
 protected
 
-  def salt
+  def self.salt
     "6dc241712d34d63cb"
   end
 end
