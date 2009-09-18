@@ -15,6 +15,9 @@ module Models
     require_from( "models/scheme" )
 
     DataMapper.auto_migrate!
+
+    load_logic # SMELL
+    default_users
   end
 
   def self.startup
