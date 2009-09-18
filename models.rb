@@ -16,7 +16,7 @@ module Models
 
     DataMapper.auto_migrate!
 
-    load_logic # SMELL
+    ensure_user_logic
     default_users
   end
 
@@ -52,6 +52,10 @@ protected
 
   def self.load_logic
     require_from( "models/logics" )
+  end
+
+  def self.ensure_user_logic
+    require 'models/logic/user'
   end
 
   def self.default_users
