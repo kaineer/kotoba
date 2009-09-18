@@ -29,4 +29,12 @@ module Url
     score = UserScore.find_or_create( User.current_id )
     Url.tango( ( score && score.tango_id ).to_i )
   end
+
+  def self.webmail( to, subj, body )
+    "http://mail.google.com/mail/?view=cm&fs=1&to=%s&su=%s&body=%s" % [ to, subj, body ]
+  end
+
+  def self.validation( hash )
+    webmail( "kaineer@gmail.com", "[kotoba.validation]", hash )
+  end
 end

@@ -3,10 +3,16 @@ require 'md5'
 
 class Authentication
   def self.authenticate?( user, password )
-    user.password == garble( password )
+    user.password == garble( user.name + password )
   end
 
-  def self.garble( password )
-    MD5::md5( password ).to_s
+  def self.garble( string )
+    MD5::md5( string + salt ).to_s
+  end
+
+protected
+
+  def salt
+    "6dc241712d34d63cb"
   end
 end

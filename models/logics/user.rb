@@ -7,6 +7,10 @@
 require File.join( File.dirname( __FILE__ ), "authentication" )
 
 class User
+  def name
+    self.login
+  end
+
   def self.current_id
     Session[ "user_id" ]
   end
@@ -48,7 +52,7 @@ class User
 
   def self.create_with( login, password, email )
     User.create( :login => login, 
-                 :password => Authentication.garble( password ), 
+                 :password => Authentication.garble( login + password ), 
                  :email => email )
   end
 

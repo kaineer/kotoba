@@ -1,0 +1,19 @@
+#
+#
+#
+#
+#
+
+namespace :db do
+  task :scheme do
+    require 'models'
+  end
+
+  task :reset => :scheme do
+    Models.reset
+  end
+
+  task :migrate => :scheme do
+    Models.migrate
+  end
+end
