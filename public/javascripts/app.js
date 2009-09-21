@@ -20,7 +20,7 @@ $( document ).ready( function() {
 
   $( "a.login" ).live( "click", function() {
     $( "#login" ).html( "<div>" );
-    var form = $( "#login div" ).tag( "form", {action: "/login", method: "post"} );
+    var form = $( "#login div" ).tag( "form", {action: "/login", method: "post", "class": "instant"} );
 
     form.tag( "span", "Login:&nbsp;" );
     var login = form.tag( "input", {type: "text", size: 10, name: "login", value: ""} );
@@ -32,8 +32,10 @@ $( document ).ready( function() {
     return false;
   } );
 
-  $( "#login input, #title input" ).live( "keypress", function( e ) {
-    if( e.which == 13 ) { $( "#login form" ).submit(); }
+  $( "form.instant input" ).live( "keypress", function( e ) {
+    if( e.which == 13 ) { 
+      $( this ).parents( "form.instant" ).submit();
+    }
     return true;
   } );
 

@@ -4,7 +4,7 @@
     %h2 Verification
     .message
       %span Now you should just press a
-      %a{:href => Url.validation( @registration.verification )} link
+      %a{:href => Url.validation( @registration.verification + " (" + @registration.email + ")" )} link
       %span and send me an email from your gmail account.
       %span When I'll receive your email, I'll finish your registration,
       %span so you can login to kotoba.heroku.com

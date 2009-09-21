@@ -91,6 +91,10 @@ div#title td {
   font: 10px tahoma, verdana, sans-serif;
 }
 
+.message {
+  padding: 4px;
+}
+
 div#registrations th,
 div#title th {
   font: bold 10px tahoma, verdana, sans-serif;
