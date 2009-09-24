@@ -2,6 +2,10 @@
   #notice= flash[:notice]
   #title
     %h2 Registration
+    .message
+      For registration you'll need
+      %a{:href=>'http://mail.google.com/mail/signup', :target=>'_blank'} gmail account
+      to send me verification email.
     %form{:action=>'/verify', :method=>'post', :class => 'instant'}
       %table{:border=>0}
         %tr
