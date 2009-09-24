@@ -6,7 +6,6 @@ require 'lib/register'
 enable :sessions
 use Rack::Flash
 
-
 before do
   Session.instance = session
 end
@@ -17,7 +16,9 @@ post "/login" do
 
 puts params.inspect
 
-  current_name = User.current.login rescue nil
+  User.login( login, password )
+
+  current_name = User.current.name rescue nil
 
   if login == current_name
     flash[ :notice ] = "User logged in"

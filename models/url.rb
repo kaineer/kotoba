@@ -34,7 +34,7 @@ module Url
     "http://mail.google.com/mail/?view=cm&ui=1&fs=1&to=%s&su=%s&body=%s" % [ to, subj, body ]
   end
 
-  def self.validation( hash )
-    webmail( "kaineer@gmail.com", "[kotoba.validation]", hash )
+  def self.validation( message )
+    webmail( "kaineer@gmail.com", "[kotoba.validation]", message )
   end
 end
