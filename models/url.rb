@@ -18,11 +18,11 @@ module Url
   end
 
   def self.print_bookmarks
-    "/print"
+    "/bookmarks/print"
   end
 
   def self.clear_bookmarks
-    "/clear"
+    "/bookmarks/clear"
   end
 
   def self.user
