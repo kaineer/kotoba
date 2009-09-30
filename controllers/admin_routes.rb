@@ -26,7 +26,9 @@ post "/admin/verify" do
       @registration.destroy
     end
 
-    redirect "/admin/registrations"
+    flash[ :notice ] = "User #{@registration.email} successfully registered"
+
+    redirect Url.admin_registrations
   else
     flash[ :notice ] = "You've no rights to admin here"
     redirect Url.user

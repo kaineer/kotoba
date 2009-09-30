@@ -19,3 +19,16 @@ get "/bookmark/:id/unset" do
   
   redirect Url.user
 end
+
+
+get "/bookmarks/print" do
+  @user = User.current
+  @bookmarks = @user.user_bookmarks.sort_by{|b|b.tango_id}
+
+  haml :print
+end
+
+get "/bookmarks/clear" do
+  User.current.clear_bookmarks rescue nil
+  redirect Url.user
+end
