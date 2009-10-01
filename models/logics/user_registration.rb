@@ -2,6 +2,14 @@
 class UserRegistration
   #
   def self.create_from( register )
+    if User.first( :login.eql => register.login )
+      return nil
+    end
+
+    if User.first( :email.eql => register.email )
+      return nil
+    end
+
     if register.email && register.password_verified?
       ur = UserRegistration.first( :email.eql => register.email )
       

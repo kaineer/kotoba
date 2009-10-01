@@ -37,4 +37,12 @@ module Url
   def self.validation( message )
     webmail( "kaineer@gmail.com", "[kotoba.validation]", message )
   end
+
+  def self.admin_registrations
+    "/admin/registrations"
+  end
+
+  def self.admin_verify
+    "/admin/verify"
+  end
 end
