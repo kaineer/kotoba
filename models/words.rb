@@ -7,4 +7,5 @@
 module Words
   PREVIOUS = 'まえ'
   NEXT = 'つぎ'
+  KOTOBA = '言葉'
 end

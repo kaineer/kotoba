@@ -1,3 +1,14 @@
+.container
+  .span-24.last
+    %h1= Words::KOTOBA
+  -if flash[:notice]
+    .span-24.notice= flash[ :notice ]
+
+  .span-18.colborder
+  .span-5.last
+
+
+
 #container
   #notice= flash[:notice]
   - if User.admin?
