@@ -29,6 +29,21 @@ body {
   background-color: #EBF5FB;
 }
 
+/*
+*/
+
+.tango {
+  background-color: #FFE98F;
+  border: solid 1px #EBCF5A;
+  margin-bottom: 12px;
+  padding: 2px;
+}
+
+.tango h1 {
+  padding-bottom: 0;
+  margin-bottom: 0px;
+}
+
 
 /*
 */

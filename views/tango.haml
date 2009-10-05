@@ -1,6 +1,6 @@
 .span-24.last.top-padded
   .span-18.colborder
-    .span-18.last
+    .span-18.tango.last
       %h1= @tango.kanji
     .span-18
       %table.spoilers.span-18{:width=>'100%'}
@@ -24,6 +24,12 @@
     - if User.current
       .span-5.last.item
         %a{:href=>Url.logout} Logout
+    .span-5.last Tango
+    - if @tango.index > 0
+      .span-5.last.item
+        %a{:href=>Url.tango( @tango.prev.index )} Previous
+    .span-5.last.item
+      %a{:href=>Url.tango( @tango.next.index )} Next
     - if User.current
       .span-5.last Bookmarks
       .span-5.last.item
