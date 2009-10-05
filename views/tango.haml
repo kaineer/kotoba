@@ -1,15 +1,39 @@
-.container
-  .span-24.last
-    %h1= Words::KOTOBA
-  -if flash[:notice]
-    .span-24.notice= flash[ :notice ]
-
+.span-24.last.top-padded
   .span-18.colborder
-  .span-5.last
+    .span-18.last
+      %h1= @tango.kanji
+    .span-18
+      %table.spoilers.span-18{:width=>'100%'}
+        %tr
+          %td{:class=>'right'} Meaning
+          %td{:class=>'spoiler',:width=>'100%'}= @tango.meaning
+        %tr
+          %td{:class=>'right'} Reading
+          %td{:class=>'spoiler'}= @tango.kana	
 
+  .span-5.last.sidebar
+    .span-5.last Authentication
+    - unless User.current
+      .span-5.last.item
+        %a{:href=>Url.login} Login
+      .span-5.last.item
+        %a{:href=>Url.register} Register
+    - if User.admin?
+      .span-5.last.item
+        %a{:href=>Url.admin_registrations} Registrations      
+    - if User.current
+      .span-5.last.item
+        %a{:href=>Url.logout} Logout
+    - if User.current
+      .span-5.last Bookmarks
+      .span-5.last.item
+        %a{:href=>Url.bookmark_set( @tango.index )} Add
+      .span-5.last.item
+        %a{:href=>Url.print_bookmarks} Print
+      .span-5.last.item
+        %a{:href=>Url.clear_bookmarks} Clear
 
-
-#container
+#container.span-24.last
   #notice= flash[:notice]
   - if User.admin?
     #admin

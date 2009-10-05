@@ -10,11 +10,13 @@ before do
   Session.instance = session
 end
 
+get "/login" do
+  haml :login
+end
+
 post "/login" do
   login    = params[ "login" ]
   password = params[ "password" ]
-
-puts params.inspect
 
   User.login( login, password )
 

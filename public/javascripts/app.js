@@ -18,6 +18,11 @@ $( document ).ready( function() {
     } );
   }
 
+  $( ".notice" ).click( function() {
+    $( this ).remove();
+    return false;
+  } );
+
   $( "a.login" ).live( "click", function() {
     $( "#login" ).html( "<div>" );
     var form = $( "#login div" ).tag( "form", {action: "/login", method: "post", "class": "instant"} );

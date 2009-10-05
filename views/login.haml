@@ -1,0 +1,12 @@
+.span-24.last
+  %h1 Log in
+  %form.login.instant{:action=>Url.login, :method=>'POST'}
+    %table{:widht=>'100%', :style=>'padding-left: 10px;'}
+      %tr
+        %td.right{:width=>'1px'} Login:
+        %td
+          %input{:type=>'text', :size=>20, :name => "login", :value => "" }
+      %tr
+        %td Password:
+        %td
+          %input{:type=>'password', :size=>20, :name => "password", :value => ""}
