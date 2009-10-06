@@ -97,8 +97,8 @@ body {
    --- BOOKMARKS
 */
 
-.kana, .kanji, .meaning {
-  
+.kana div, .kanji div, .meaning div {
+  padding-left: 2px;
 }
 
 .bookmarks {

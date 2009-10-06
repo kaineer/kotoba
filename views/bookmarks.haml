@@ -4,16 +4,22 @@
 
 .span-18.last.top-padded
   .span-18.last.overline.underline
-    .span-3.toggle.kanji Kanji
-    .span-3.toggle.kana Reading
-    .span-11.toggle.meaning Meaning
+    .span-3.toggle.kanji
+      .span-3.last Kanji
+    .span-3.toggle.kana 
+      .span-3.last Reading
+    .span-11.toggle.meaning 
+      .span-11.last Meaning
     .span-1.last
   - @bookmarks.each do |bkm|
     .span-18.last.underline.bookmarks
       - tango = Tango[bkm.tango_id]
-      .span-3.kanji= tango.kanji
-      .span-3.kana= tango.kana
-      .span-11.meaning= tango.meaning
+      .span-3.kanji
+        .span-3.last= tango.kanji
+      .span-3.kana
+        .span-3.last= tango.kana
+      .span-11.meaning
+        .span-11.last= tango.meaning
       .span-1.last{:valign=>'middle'}
         %a{:href=>Url.bookmark_unset(bkm.tango_id),:title=>"Remove"}
           %img{:src=>"/images/cross.png"}
