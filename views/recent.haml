@@ -1,0 +1,16 @@
+-#
+-# Recent tango
+-#
+
+.span-18.last.top-padded
+  .span-18.last.chapter
+    Recent
+  .span-18.last.underline.overline.recent
+    - @visited.each_with_index do |hid, i|
+      - if @tango.index == hid
+        = @tango.kanji
+      - else
+        %a{:href=>Url.tango( hid )}= Tango[ hid ].kanji
+      - if i < @visited.size - 1
+        = Words::COMMA
+    = Words::DOT

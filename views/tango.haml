@@ -8,6 +8,8 @@
     .span-18.underline.last
       .span-3.right Reading:
       .span-15.last.spoiler= @tango.kana
+    - unless @visited.empty?
+      = haml :recent, :layout => false
     - unless @bookmarks.empty?
       = haml :bookmarks, :layout => false
   .span-5.last.sidebar

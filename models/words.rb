@@ -8,4 +8,6 @@ module Words
   PREVIOUS = 'まえ'
   NEXT = 'つぎ'
   KOTOBA = '言葉'
+  COMMA = '、'
+  DOT = '。'
 end

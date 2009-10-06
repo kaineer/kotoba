@@ -1,12 +1,10 @@
-.span-24.last
-  %h1 Log in
-  %form.login.instant{:action=>Url.login, :method=>'POST'}
-    %table{:widht=>'100%', :style=>'padding-left: 10px;'}
-      %tr
-        %td.right{:width=>'1px'} Login:
-        %td
-          %input{:type=>'text', :size=>20, :name => "login", :value => "" }
-      %tr
-        %td Password:
-        %td
-          %input{:type=>'password', :size=>20, :name => "password", :value => ""}
+%form.instant{:action=>Url.login, :method=>'POST'}
+  .span-24.last.big-form{:style=>'margin-top: 50px;'}
+    .span-24.last{:valign=>'bottom'}
+      .span-6.right Login:
+      .span-18.last
+        %input.span-17{:type=>'text', :name => "login", :value => "" }
+    .span-24.last
+      .span-6.right Password:
+      .span-18.last
+        %input.span-17{:type=>'password', :name => "password", :value => "" }

@@ -4,7 +4,6 @@ body {
     font-size: 12pt;
     color:#222;
     background:#fff;
-    /*font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;*/
     font-family:Georgia, serif;
 }
 
@@ -25,14 +24,23 @@ body {
 }
 
 /*
-   --- LOGIN
+   --- BIG FORM
 */
 
-.login input {
+.big-form div {
+ text-align: bottom;
+}
+
+.big-form div, .big-form input {
   font-size: 24pt;
 }
 
-.login {
+.big-form input {
+  margin: 8px;
+  padding: 2px;
+}
+
+.big-form {
   border: solid 1px #7092A6;
   background-color: #EBF5FB;
 }
@@ -75,11 +83,11 @@ body {
 .sidebar div {
   /* background-color: #bbd5e4; */
   font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 10pt;
+  font-size: 12pt;
 }
 
 .sidebar .item {
-  padding-left: 10px;
+  padding-left: 12px;
 }
 
 .sidebar a {
@@ -91,6 +99,27 @@ body {
 .sidebar a:hover {
   text-decoration: underline;
   color: #000000;
+}
+
+/*
+*/
+.chapter {
+  font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 12pt;
+}
+
+/*
+   --- RECENT
+*/
+
+.recent a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.recent a:hover {
+  /* text-decoration: underline; */
+  background-color: #FFE98F;
 }
 
 /*
@@ -117,6 +146,10 @@ body {
   border-bottom: solid 1px #000000;
 }
 
+.toggle {
+  color: #3A5A83;
+}
+
 .toggle:hover {
-  background-color: #eeeeee;
+  color: #000000;
 }
