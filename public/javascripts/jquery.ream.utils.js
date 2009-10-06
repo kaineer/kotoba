@@ -64,4 +64,17 @@
     return $( this );
   }
 
+  $.fn.additionalClass = function( array ) {
+    var $className = null;
+    var $this = $( this );
+
+    $.each( array, function( i, name ) {
+      if( $this.hasClass( name ) ) { 
+	$className = name;
+      }
+    } );
+
+    return $className;
+  }
+
 })( jQuery );

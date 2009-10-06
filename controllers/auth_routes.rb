@@ -1,4 +1,5 @@
 #
+=begin
 require 'rack-flash'
 require 'lib/register'
 
@@ -9,6 +10,7 @@ use Rack::Flash
 before do
   Session.instance = session
 end
+=end
 
 get "/login" do
   haml :login

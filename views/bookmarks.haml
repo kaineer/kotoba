@@ -1,13 +1,19 @@
-%table{:width=>"100%"}
-  %tr
-    %th Kanji
-    %th Reading
-    %th Meaning
-    %th     
-      - @bookmarks.each do |bkm|
-        %tr
-          %td{:width=>"50px"}= Tango[bkm.tango_id].kanji
-          %td{:width=>"70px"}= Tango[bkm.tango_id].kana
-          %td= Tango[bkm.tango_id].meaning
-          %td{:width=>"1px"}
-            %a{:href=>Url.bookmark_unset(bkm.tango_id),:title=>"Remove"} x
+-#
+-# Bookmarks block
+-#
+
+.span-18.last.top-padded
+  .span-18.last.overline.underline
+    .span-3.toggle.kanji Kanji
+    .span-3.toggle.kana Reading
+    .span-11.toggle.meaning Meaning
+    .span-1.last
+  - @bookmarks.each do |bkm|
+    .span-18.last.underline.bookmarks
+      - tango = Tango[bkm.tango_id]
+      .span-3.kanji= tango.kanji
+      .span-3.kana= tango.kana
+      .span-11.meaning= tango.meaning
+      .span-1.last{:valign=>'middle'}
+        %a{:href=>Url.bookmark_unset(bkm.tango_id),:title=>"Remove"}
+          %img{:src=>"/images/cross.png"}

@@ -39,8 +39,14 @@ module Models
 
   def self.datamapper_startup
     DataMapper.setup( :default,
-                      ENV[ "DATABASE_URL" ] || "sqlite3:///#{Dir.pwd}/db/tango.db" )
-    # DataMapper::Logger.new( STDOUT, :debug )
+                      ENV[ "DATABASE_URL" ] || 
+                      local_datamapper_startup )
+  end
+
+  def self.local_datamapper_startup
+    Dir.mkdir( "db" ) unless File.directory?( "db" )
+
+    "sqlite3:///#{Dir.pwd}/db/tango.db"  
   end
 
   def self.in_memory_logic

@@ -2,70 +2,19 @@
   .span-18.colborder
     .span-18.tango.last
       %h1= @tango.kanji
-    .span-18
-      %table.spoilers.span-18{:width=>'100%'}
-        %tr
-          %td{:class=>'right'} Meaning
-          %td{:class=>'spoiler',:width=>'100%'}= @tango.meaning
-        %tr
-          %td{:class=>'right'} Reading
-          %td{:class=>'spoiler'}= @tango.kana	
-
+    .span-18.underline.last
+      .span-3.right Meaning:
+      .span-15.last.spoiler= @tango.meaning
+    .span-18.underline.last
+      .span-3.right Reading:
+      .span-15.last.spoiler= @tango.kana
+    - unless @bookmarks.empty?
+      = haml :bookmarks, :layout => false
   .span-5.last.sidebar
-    .span-5.last Authentication
-    - unless User.current
-      .span-5.last.item
-        %a{:href=>Url.login} Login
-      .span-5.last.item
-        %a{:href=>Url.register} Register
-    - if User.admin?
-      .span-5.last.item
-        %a{:href=>Url.admin_registrations} Registrations      
-    - if User.current
-      .span-5.last.item
-        %a{:href=>Url.logout} Logout
-    .span-5.last Tango
-    - if @tango.index > 0
-      .span-5.last.item
-        %a{:href=>Url.tango( @tango.prev.index )} Previous
-    .span-5.last.item
-      %a{:href=>Url.tango( @tango.next.index )} Next
-    - if User.current
-      .span-5.last Bookmarks
-      .span-5.last.item
-        %a{:href=>Url.bookmark_set( @tango.index )} Add
-      .span-5.last.item
-        %a{:href=>Url.print_bookmarks} Print
-      .span-5.last.item
-        %a{:href=>Url.clear_bookmarks} Clear
+    =haml :sidebar, :layout => false
 
-#container.span-24.last
-  #notice= flash[:notice]
-  - if User.admin?
-    #admin
-      %a{:href=>"/admin/registrations"} Registrations
-  #login{:name=>User.current ? User.current.email : nil}
-  #title
-    -if @tango.prev
-      %sup
-        %a{:href=>Url.tango(@tango.prev.index), :title=>"#{Words::PREVIOUS}"}= @tango.prev.kanji
-    %span{:title=>"#{@tango.index}"}= @tango.kanji
-    %sup
-      %a{:href=>Url.tango( @tango.next.index ), :title=>Words::NEXT}= @tango.next.kanji
-  - if @user
-    #controls
-      = "Bookmarks: "
-      %a{:href=>Url.bookmark_set( @tango.index )}= "Add"
-      %a{:href=>Url.print_bookmarks}= "Print"
-      %a{:href=>Url.clear_bookmarks}= "Clear"
-  #spoilers
-    %table{:width=>'100%'}
-      %tr
-        %td{:class=>'right'} Meaning
-        %td{:class=>'spoiler',:width=>'100%'}= @tango.meaning
-      %tr
-        %td{:class=>'right'} Reading
-        %td{:class=>'spoiler'}= @tango.kana	
+
+-#
   #history
     - @visited.each do |hid|
       %span
@@ -73,7 +22,3 @@
           = @tango.kanji
         -else
           %a{:href=>Url.tango( hid )}= Tango[hid].kanji
-  - if @user
-    #bookmarks
-      - unless @bookmarks.empty?
-        = haml( :bookmarks, :layout => false )

@@ -44,10 +44,32 @@ $( document ).ready( function() {
     return true;
   } );
 
+  /// TODO: focus on first input of instant form!
+  $( "form.instant input:first" ).focus();
+
 
   $( ".bookmark" ).live( "click", function() {
     /// TODO
   } );
 
   $( "#bookmarks table tr:odd, #registrations table tr:odd" ).addClass( "odd" );
+
+  $( ".tango" ).hover( 
+    function() { $( ".spoiler:not(.bookmarks .spoiler)" ).addClass( "visible" ); },
+    function() { $( ".spoiler:not(.bookmarks .spoiler)" ).removeClass( "visible" ); }
+  );
+
+  $( ".toggle" ).click( function() {
+    var $toggleClass = $( this ).additionalClass( [ "kanji", "kana", "meaning" ] );
+    $( ".bookmarks ." + $toggleClass ).toggleClass( "spoiler" );
+  } ).hover(
+    function() { 
+      var $toggleClass = $( this ).additionalClass( [ "kanji", "kana", "meaning" ] );
+      $( ".bookmarks ." + $toggleClass ).addClass( "selected-column" );
+    },
+    function() {
+      var $toggleClass = $( this ).additionalClass( [ "kanji", "kana", "meaning" ] );
+      $( ".bookmarks ." + $toggleClass ).removeClass( "selected-column" );
+    } 
+  );
 } );

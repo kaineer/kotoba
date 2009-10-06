@@ -16,6 +16,14 @@ body {
   text-align: right;
 }
 
+.underline {
+  border-bottom: dotted 1px #444444;
+}
+
+.overline {
+  border-top: dotted 1px #444444;
+}
+
 /*
    --- LOGIN
 */
@@ -35,12 +43,11 @@ body {
 .tango {
   background-color: #FFE98F;
   border: solid 1px #EBCF5A;
-  margin-bottom: 12px;
-  padding: 2px;
+  /* margin-bottom: 12px; */
 }
 
 .tango h1 {
-  padding-bottom: 0;
+  padding: 2px;
   margin-bottom: 0px;
 }
 
@@ -58,13 +65,12 @@ body {
   padding: 1px 4px;
 }
 
-.spoilers td.spoiler {
-  color: #ffffff;
-}
+.spoiler { color: #FFFFFF; }
+.spoiler:hover, .spoiler.visible { color: #3A5A83; }
 
-.spoilers td.spoiler:hover {
-  color: #3A5A83;
-}
+/*
+  --- SIDEBAR
+*/
 
 .sidebar div {
   /* background-color: #bbd5e4; */
@@ -85,4 +91,32 @@ body {
 .sidebar a:hover {
   text-decoration: underline;
   color: #000000;
+}
+
+/*
+   --- BOOKMARKS
+*/
+
+.kana, .kanji, .meaning {
+  
+}
+
+.bookmarks {
+  color: #3A5A83;
+}
+
+.bookmarks .selected-column {
+  color: #000000;
+}
+
+.bookmarks .selected-column.spoiler {
+  color: #FFFFFF;
+}
+
+.bookmarks:hover {
+  border-bottom: solid 1px #000000;
+}
+
+.toggle:hover {
+  background-color: #eeeeee;
 }
