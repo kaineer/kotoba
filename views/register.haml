@@ -1,27 +1,19 @@
-#container
-  #notice= flash[:notice]
-  #title
-    %h2 Registration
-    .message
-      NOTE: For registration you'll need 
-      %a{:href=>'http://mail.google.com/mail/signup'} gmail account
-      to send me your verification code.
-    %form{:action=>'/verify', :method=>'post', :class => 'instant'}
-      %table{:border=>0}
-        %tr
-          %th Login:
-          %td
-            %input{:type=>'text',:name=>'login', :value => @register.login}
-        %tr
-          %th Email:
-          %td
-            %input{:type=>'text',:name=>'email', :value => @register.email_prefix}
-            %span @gmail.com
-        %tr
-          %th Password:
-          %td
-            %input{:type=>'password',:name=>'password', :value => @register.password}
-        %tr
-          %th Repeat password:
-          %td
-            %input{:type=>'password',:name=>'repeat', :value => @register.password}
+%form.instant{:action=>Url.verify, :method=>'POST'}
+  .span-24.last.big-form{:style=>'margin-top: 50px;'}
+    .span-24.last
+      .span-6.right Login:
+      .span-10.last
+        %input.span-9{:type=>'text', :name => "login", :value => "" }
+    .span-24.last
+      .span-6.right Email:
+      .span-18.last
+        %input.span-9{:type=>'text', :name => "email", :value => "" }
+        @gmail.com
+    .span-24.last
+      .span-6.right Password:
+      .span-18.last
+        %input.span-17{:type=>'password', :name => "password", :value => "" }
+    .span-24.last
+      .span-6.right Repeat:
+      .span-18.last
+        %input.span-17{:type=>'password', :name => "repeat", :value => "" }

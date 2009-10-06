@@ -50,6 +50,10 @@ module Url
     "/register"
   end
 
+  def self.verify
+    "/verify"
+  end
+
   def self.admin_registrations
     "/admin/registrations"
   end

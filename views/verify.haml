@@ -1,14 +1,15 @@
-#container
-  #notice= flash[:notice]
-  #title
-    %h2 Verification
-    .message
+.span-24.last{:style=>'margin-top: 50px;'}
+  .span-24.last
+    %p
       Now you should just press a
       %a{:href => Url.validation( @registration.verification + " (" + @registration.email + ")" )} link
       and send me an email from your gmail account.
       When I'll receive your email, I'll finish your registration,
-      so you can login to kotoba.heroku.com
-    .message
+      so you can 
+      %a{:href => Url.login} login 
+      to kotoba.heroku.com
+  .span-24.last
+    %p
       In case you could not open GMail form,
       send me email with subject "[kotoba.registration]",
       and text

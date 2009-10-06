@@ -51,11 +51,14 @@ post "/verify" do
   @registration = nil
   
   if UserRegistration.create_from( @register )
+    @title = "Verification"
+
     @registration = UserRegistration.first( :email.eql => @register.email )
+
     flash[ :notice ] = "Created registration for email `#{@register.email}'"
     haml :verify
   else
     flash[ :notice ] = "Could not create registration for login `#{@register.login}' and email `#{@register.email}'"
-    redirect "/register"
+    redirect Url.register
   end
 end

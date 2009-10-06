@@ -23,6 +23,10 @@ body {
   border-top: dotted 1px #444444;
 }
 
+p {
+  text-indent: 1.5em;
+}
+
 /*
    --- BIG FORM
 */

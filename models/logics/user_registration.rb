@@ -22,7 +22,11 @@ class UserRegistration
       ur.created_at   = Time.now
 
       ur.save
+
+      return true
     end
+
+    nil
   end
 
 end
