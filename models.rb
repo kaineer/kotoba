@@ -55,6 +55,7 @@ module Models
     require 'models/words'
     require 'models/session'
     require 'models/url'
+    require 'lib/register'
   end
 
   def self.load_logic

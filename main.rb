@@ -26,6 +26,8 @@ get "/tango/:id" do
   @user = User.current
   @tango = Tango[ params[ :id ].to_i ]
 
+  @title = "Tango: #{@tango.kanji}"
+
   @visited = Visited.ids
 
   @bookmarks = []

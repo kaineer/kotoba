@@ -13,6 +13,7 @@ end
 =end
 
 get "/login" do
+  @title = "Log in"
   haml :login
 end
 
@@ -39,6 +40,7 @@ get "/logout" do
 end
 
 get "/register" do
+  @title = "New user"
   @register = Register.new
 
   haml :register
