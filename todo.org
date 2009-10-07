@@ -1,3 +1,10 @@
 * TODO Use blueprint css
 * TODO More features
 ** TODO Groupped bookmarks
+** TODO Search and bookmarks from search
+  Search by kanji, kana, romaji and meaning
+  When latin is entered, try to search both romaji and meaning.
+  In case romaji is wrong, try only meaning.
+** TODO Email registration
+  If only I had an smtp server..
+
