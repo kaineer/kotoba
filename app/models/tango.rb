@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'ostruct'
+require 'ream/nihon/kana'
 
 class Tango < OpenStruct
   #
@@ -40,6 +41,11 @@ class Tango < OpenStruct
 
   def self.select_kana( kana )
     select_field( :kana, kana )
+  end
+
+  def self.select_romaji( romaji )
+    kana = Ream::Nihon::Kana.new( romaji )
+    select_kana( kana.to_s )
   end
 
   def self.select_meaning( meaning )
