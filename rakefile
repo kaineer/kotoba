@@ -5,12 +5,12 @@
 #
 
 task :default do
-  ruby "main.rb"
+  ruby "app/main.rb"
 end
 
 namespace :db do
   task :scheme do
-    require 'models'
+    require 'app/models'
   end
 
   task :reset => :scheme do

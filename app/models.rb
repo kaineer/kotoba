@@ -2,6 +2,8 @@
 #
 require 'dm-core'
 
+$:.unshift( File.dirname( __FILE__ ) )
+
 module Models
   def self.migrate
     datamapper_startup
@@ -29,8 +31,8 @@ module Models
 
   FILES = [ "user", "user_score", "user_bookmark", "user_registration" ]
 
-  def self.require_from( dir )
-    FILES.each do |name|
+  def self.require_from( dir, files = FILES )
+    files.each do |name|
       filename = File.join( dir, name )
       puts "Loading from #{filename}.."
       require filename
@@ -50,12 +52,8 @@ module Models
   end
 
   def self.in_memory_logic
-    require 'models/jlpt'
-    require 'models/visited'
-    require 'models/words'
-    require 'models/session'
-    require 'models/url'
-    require 'lib/register'
+    require_from( "models", 
+         %w( jlpt visited words session url register ) )
   end
 
   def self.load_logic

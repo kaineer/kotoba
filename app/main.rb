@@ -1,12 +1,12 @@
 #
 require 'rubygems'
 require 'sinatra'
-
 require 'yaml'
 require 'haml'
-#
-
 require 'rack-flash'
+
+$:.unshift( File.dirname( __FILE__ ) )
+set :public, File.join( File.dirname( __FILE__ ), "../public" )
 
 require 'models'
 Models.startup
