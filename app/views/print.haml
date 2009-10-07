@@ -1,11 +1,14 @@
-%table{:class=>"print_bookmarks"}
-  %tr
-    %th{:width=>"100px"} Kanji
-    %th{:width=>"100px"} Reading
-    %th{:width=>"400px"} Meaning
-  - @bookmarks.each do |bmk|
-    - tango = Tango[ bmk.tango_id ]
-    %tr
-      %td= tango.kanji
-      %td= tango.kana
-      %td= tango.meaning
+-# 
+-# Print
+-#
+
+.span-24.print.title.overline.underline.last
+  .span-4 Kanji
+  .span-4 Reading
+  .span-16.last Meaning
+- @bookmarks.each do |bmk|
+  - tango = Tango[ bmk.tango_id ]
+  .span-24.print.line.underline.last
+    .span-4= tango.kanji
+    .span-4= tango.kana
+    .span-16.last= tango.meaning

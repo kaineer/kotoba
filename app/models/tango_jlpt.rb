@@ -1,25 +1,6 @@
-# -*- coding: utf-8 -*-
-require 'ostruct'
+#
 
-class Tango < OpenStruct
-  #
-  #
-  def self.[]( key )
-    index = key.to_i
-    return nil if index < 0
-    return nil if index >= JLPT.size
-    self.new( JLPT[ index ].merge( :index => index ) )
-  end
-
-  def next
-    Tango[ self.index + 1 ]
-  end
-
-  def prev
-    Tango[ self.index - 1 ]
-  end
-
-  JLPT = [
+JLPT = [
   { :kanji => '～人', :kana => '～じん', :meaning => '(n-suf) ~ an / ~ese (eg.: Japanese)', :jlpt => 4 },
   { :kanji => '～人', :kana => '～にん', :meaning => '(n-suf) ~ people (number of)', :jlpt => 4 },
   { :kanji => '一人', :kana => 'ひとり', :meaning => 'one person', :jlpt => 4 },
@@ -6971,7 +6952,4 @@ class Tango < OpenStruct
   { :kanji => '熊', :kana => 'くま', :meaning => '(n) bear (animal)', :jlpt => 1 },
   { :kanji => '喧嘩 ', :kana => 'けんか', :meaning => '(n) quarrel/(drunken) brawl/failure/(P)/', :jlpt => 1 },
   { :kanji => '裂ける ', :kana => 'さける', :meaning => '(v1) to split, to tear, to burst', :jlpt => 1 }
-  ]
-
-end
-
+]

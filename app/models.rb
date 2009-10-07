@@ -53,7 +53,7 @@ module Models
 
   def self.in_memory_logic
     require_from( "models", 
-         %w( jlpt visited words session url register ) )
+         %w( tango visited words session url register ) )
   end
 
   def self.load_logic
