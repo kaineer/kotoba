@@ -1,0 +1,13 @@
+#
+# Default users' accounts
+#
+
+- login:    demo
+  password: demo
+  email:    nohow@nowhere.com
+
+# here you may define your admin's account, like that:
+# - login:   admin
+#   password: secretadminpassword
+#   email: adminemail@foodomain.com
+#   admin: true
