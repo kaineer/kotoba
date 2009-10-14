@@ -60,7 +60,7 @@ module Models
         File.join( File.dirname( __FILE__ ), "../config/database.yml" 
       )
     
-      DataMapper::Database.setup( database_config )
+      DataMapper.setup( :default, database_config )
 
       return true
     rescue Exception => e
