@@ -57,7 +57,7 @@ module Models
   def self.config_datamapper_startup
     begin
       database_config = YAML.load_file( 
-        File.join( File.dirname( __FILE__ ), "../config/database.yml" 
+        File.join( File.dirname( __FILE__ ), "../config/database.yml" )
       )
     
       DataMapper.setup( :default, database_config )
