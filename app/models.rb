@@ -41,7 +41,7 @@ module Models
   end
 
   def self.datamapper_startup
-    unless config_datamapper_setup
+    unless self.config_datamapper_startup
       DataMapper.setup( :default,
                         ENV[ "DATABASE_URL" ] || 
                         local_datamapper_startup )
