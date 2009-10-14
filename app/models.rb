@@ -41,15 +41,31 @@ module Models
   end
 
   def self.datamapper_startup
-    DataMapper.setup( :default,
-                      ENV[ "DATABASE_URL" ] || 
-                      local_datamapper_startup )
+    unless config_datamapper_setup
+      DataMapper.setup( :default,
+                        ENV[ "DATABASE_URL" ] || 
+                        local_datamapper_startup )
+    end
   end
 
   def self.local_datamapper_startup
     Dir.mkdir( "db" ) unless File.directory?( "db" )
 
     "sqlite3:///#{Dir.pwd}/db/tango.db"  
+  end
+
+  def self.config_datamapper_startup
+    begin
+      database_config = YAML.load_file( 
+        File.join( File.dirname( __FILE__ ), "../config/database.yml" 
+      )
+    
+      DataMapper::Database.setup( database_config )
+
+      return true
+    rescue Exception => e
+      return nil
+    end
   end
 
   def self.in_memory_logic

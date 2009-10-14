@@ -1,0 +1,6 @@
+#
+adapter: 'postgres'
+host: 'localhost' 
+database: 'kotoba'
+username: 'dbuser'
+password: 'dbuserpassword'
