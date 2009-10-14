@@ -30,7 +30,7 @@ module Models
     default_users
   end
 
-  FILES = [ "user", "user_score", "user_bookmark", "user_registration", "user_ui" ]
+  FILES = [ "user", "user_score", "user_bookmark", "user_registration" ] #, "user_ui" ]
 
   def self.require_from( dir, files = FILES )
     files.each do |name|
