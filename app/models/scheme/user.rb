@@ -14,5 +14,5 @@ class User
 
   has n, :user_bookmarks
   has 1, :user_score
-  has 1, :user_ui, :class_name => "UserUI"
+  # has 1, :user_ui, :class_name => "UserUI"
 end # of properties
