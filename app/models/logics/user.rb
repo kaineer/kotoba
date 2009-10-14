@@ -70,15 +70,10 @@ class User
     User.first( :login.eql => "admin" )
   end
 
-  def self.ensure_admin_existance
-    unless self.find_admin
-      User.create_with( "admin", "greencheese", "kaineer@gmail.com", true )
-    end
-  end
-
-  def self.ensure_demo_existance
-    unless User.first( :login.eql => "demo" )
-      User.create_with( "demo", "demo", "noreply@somewhere.no" )
+  def self.ensure( login, password, email, admin = false )
+    unless User.first( :login.eql => login )
+      admin = !admin.nil? ### NOTE: Should be (true|false) only
+      User.create_with( login, password, email, admin )
     end
   end
 end
@@ -106,5 +101,18 @@ class User
 
   def admin?
     self.admin
+  end
+end
+
+#
+# Score logic
+#
+class User
+  def score
+    @score = self.user_score
+    unless @score
+      @score = UserScore.create( :user_id => self.id )
+    end
+    @score
   end
 end

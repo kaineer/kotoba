@@ -29,12 +29,12 @@ get "/tango/:id" do
   @title = "Tango: #{@tango.kanji}"
 
   @visited = Visited.ids
+  Visited.store( @tango.index ) 
 
   @bookmarks = []
 
   if @user
-    Visited.store( @tango.index ) 
-    score = UserScore.find_or_create( User.current_id )
+    score = @user.score
     score.update_attributes( :tango_id => @tango.index )
 
     @bookmarks = @user.user_bookmarks

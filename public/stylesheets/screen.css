@@ -157,3 +157,9 @@ p {
 .toggle:hover {
   color: #000000;
 }
+
+/*
+  --- PATCHING BLUEPRINT
+*/
+.error {background:#FFA4A2;color:#6A1A10;border-color:#811A0D;}
+.error a {color:#8a1f11;}

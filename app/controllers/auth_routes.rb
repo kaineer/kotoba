@@ -26,7 +26,10 @@ post "/login" do
   current_name = User.current.name rescue nil
 
   if login == current_name
-    flash[ :notice ] = "User logged in"
+    flash[ :success ] = "User logged in"
+    Visited.clear
+  else
+    flash[ :error ] = "Authentication error"
   end
 
   redirect Url.user
@@ -35,7 +38,7 @@ end
 get "/logout" do
   User.logout
   Visited.clear
-  flash[ :notice ] = "User logged out"
+  flash[ :success ] = "User logged out"
   redirect Url.tango
 end
 
@@ -55,10 +58,10 @@ post "/verify" do
 
     @registration = UserRegistration.first( :email.eql => @register.email )
 
-    flash[ :notice ] = "Created registration for email `#{@register.email}'"
+    flash[ :success ] = "Created registration for email `#{@register.email}'"
     haml :verify
   else
-    flash[ :notice ] = "Could not create registration for login `#{@register.login}' and email `#{@register.email}'"
+    flash[ :error ] = "Could not create registration for login `#{@register.login}' and email `#{@register.email}'"
     redirect Url.register
   end
 end

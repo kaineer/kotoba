@@ -13,6 +13,10 @@
   %body
     .container.prepend-top
       .span-24.last
-        -if flash[:notice]
+        - if flash[:notice]
           .span-24.last.notice= flash[:notice]
+        - if flash[:success]
+          .span-24.last.success= flash[:success]
+        - if flash[:error]
+          .span-24.last.error= flash[:error]
         = yield

@@ -18,7 +18,7 @@ $( document ).ready( function() {
     } );
   }
 
-  $( ".notice" ).click( function() {
+  $( ".notice, .error, .success" ).click( function() {
     $( this ).remove();
     return false;
   } );

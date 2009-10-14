@@ -1,6 +1,7 @@
 #
 #
 require 'dm-core'
+require 'yaml'
 
 $:.unshift( File.dirname( __FILE__ ) )
 
@@ -29,7 +30,7 @@ module Models
     default_users
   end
 
-  FILES = [ "user", "user_score", "user_bookmark", "user_registration" ]
+  FILES = [ "user", "user_score", "user_bookmark", "user_registration", "user_ui" ]
 
   def self.require_from( dir, files = FILES )
     files.each do |name|
@@ -65,7 +66,12 @@ module Models
   end
 
   def self.default_users
-    User.ensure_admin_existance
-    User.ensure_demo_existance
+    default_users = YAML.load_file( 
+      File.join( File.dirname( __FILE__ ), "../config/default_users.yml" )
+    )
+
+    default_users.each do |u|
+      User.ensure( u[ 'login'], u[ 'password' ], u[ 'email' ], u[ 'admin' ] )
+    end
   end
 end
