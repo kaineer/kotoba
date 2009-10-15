@@ -59,8 +59,18 @@ module Models
       database_config = YAML.load_file( 
         File.join( File.dirname( __FILE__ ), "../config/database.yml" )
       )
-    
-      DataMapper.setup( :default, database_config )
+
+      #
+      # "adapter://user:password@hostname/dbname"
+      #
+      DataMapper.setup( :default,
+                        "#{database_config[ 'adapter' ]}://"
+                        "#{database_config[ 'username' ]}:"
+                        "#{database_config[ 'password' ]}@"
+                        "#{database_config[ 'host' ]}/"
+                        "#{database_config[ 'database' ]}"
+                        )
+)
 
       return true
     rescue Exception => e
