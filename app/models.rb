@@ -72,8 +72,12 @@ module Models
         # "adapter://user:password@hostname/dbname"
         #
         DataMapper.setup( :default,
-                          "#{database_config[ 'adapter' ]}://#{database_config[ 'username' ]}:#{database_config[ 'password' ]}@#{database_config[ 'host' ]}/#{database_config[ 'database' ]}"
-                          )
+                          { :adapter  => database_config[ 'adapter' ],
+                            :database => database_config[ 'database' ],
+                            :host     => database_config[ 'host' ],
+                            :username => database_config[ 'username' ],
+                            :password => database_config[ 'password' ]
+                          } )
 
         return true
       rescue Exception => e
