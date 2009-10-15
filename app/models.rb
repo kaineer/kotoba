@@ -64,6 +64,9 @@ module Models
 
       return true
     rescue Exception => e
+      puts "WARNING: Can't perform config setup"
+      puts e.inspect
+
       return nil
     end
   end
