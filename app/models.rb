@@ -1,5 +1,6 @@
 #
 #
+require 'rubygems'
 require 'dm-core'
 require 'yaml'
 
@@ -41,10 +42,16 @@ module Models
   end
 
   def self.datamapper_startup
-    unless self.config_datamapper_startup
+    result = self.config_datamapper_startup
+
+    if result.nil?
       DataMapper.setup( :default,
                         ENV[ "DATABASE_URL" ] || 
                         local_datamapper_startup )
+    end
+
+    if result == :failure
+      exit
     end
   end
 
@@ -55,23 +62,28 @@ module Models
   end
 
   def self.config_datamapper_startup
-    begin
-      database_config = YAML.load_file( 
-        File.join( File.dirname( __FILE__ ), "../config/database.yml" )
-      )
+    config_filename = File.join( File.dirname( __FILE__ ), "../config/database.yml" )
 
-      #
-      # "adapter://user:password@hostname/dbname"
-      #
-      DataMapper.setup( :default,
-                        "#{database_config[ 'adapter' ]}://#{database_config[ 'username' ]}:#{database_config[ 'password' ]}@#{database_config[ 'host' ]}/#{database_config[ 'database' ]}"
-                        )
+    if File.exist?( config_filename )
+      begin
+        database_config = YAML.load_file( config_filename )
+        
+        #
+        # "adapter://user:password@hostname/dbname"
+        #
+        DataMapper.setup( :default,
+                          "#{database_config[ 'adapter' ]}://#{database_config[ 'username' ]}:#{database_config[ 'password' ]}@#{database_config[ 'host' ]}/#{database_config[ 'database' ]}"
+                          )
 
-      return true
-    rescue Exception => e
-      puts "WARNING: Can't perform config setup"
-      puts e.inspect
+        return true
+      rescue Exception => e
+        puts "WARNING: Can't perform config setup"
+        puts e.inspect
+        puts e.backtrace * $/
 
+        return :failure
+      end
+    else
       return nil
     end
   end
