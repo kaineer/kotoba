@@ -64,11 +64,7 @@ module Models
       # "adapter://user:password@hostname/dbname"
       #
       DataMapper.setup( :default,
-                        "#{database_config[ 'adapter' ]}://"
-                        "#{database_config[ 'username' ]}:"
-                        "#{database_config[ 'password' ]}@"
-                        "#{database_config[ 'host' ]}/"
-                        "#{database_config[ 'database' ]}"
+                        "#{database_config[ 'adapter' ]}://#{database_config[ 'username' ]}:#{database_config[ 'password' ]}@#{database_config[ 'host' ]}/#{database_config[ 'database' ]}"
                         )
 )
 
