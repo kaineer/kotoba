@@ -18,10 +18,10 @@
       - tango = Tango[bkm.tango_id]
       .span-3.kanji
         .span-3.last= tango.kanji
-      .span-3.kana
-        .span-3.last= tango.kana
-      .span-11.meaning
-        .span-11.last= tango.meaning
+      .span-4.kana
+        .span-4.last= tango.kana
+      .span-10.meaning
+        .span-10.last= tango.meaning
       .span-1.last{:valign=>'middle'}
         %a{:href=>Url.bookmark_unset(bkm.tango_id),:title=>"Remove"}
           %img{:src=>"/images/cross.png"}
