@@ -54,6 +54,10 @@ module Url
     "/verify"
   end
 
+  def self.do_verify
+    "/do/verify"
+  end
+
   def self.admin_registrations
     "/admin/registrations"
   end

@@ -66,18 +66,11 @@ module Models
 
     if File.exist?( config_filename )
       begin
-        database_config = YAML.load_file( config_filename )
+        database_config = YAML.load_file( config_filename ).inject( {} ) do |hash, ( key, value )|
+          hash.merge( key.to_sym => value )
+        end
         
-        #
-        # "adapter://user:password@hostname/dbname"
-        #
-        DataMapper.setup( :default,
-                          { :adapter  => database_config[ 'adapter' ],
-                            :database => database_config[ 'database' ],
-                            :host     => database_config[ 'host' ],
-                            :username => database_config[ 'username' ],
-                            :password => database_config[ 'password' ]
-                          } )
+        DataMapper.setup( :default, database_config )
 
         return true
       rescue Exception => e
@@ -94,7 +87,7 @@ module Models
 
   def self.in_memory_logic
     require_from( "models", 
-         %w( tango visited words session url register ) )
+         %w( tango visited words session url register site ) )
   end
 
   def self.load_logic

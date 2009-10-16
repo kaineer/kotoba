@@ -4,6 +4,7 @@ require 'sinatra'
 require 'yaml'
 require 'haml'
 require 'rack-flash'
+require 'pony'
 
 $:.unshift( File.dirname( __FILE__ ) )
 set :public, File.join( File.dirname( __FILE__ ), "../public" )

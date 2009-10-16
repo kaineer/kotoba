@@ -29,4 +29,25 @@ class UserRegistration
     nil
   end
 
+  def send_verification
+    body = <<EOT
+Hello, #{self.login}!
+
+You, (or another person) entered your email 
+into registration form at #{Site.base}#{Url.login}.
+
+If you still wish to proceed with your registration,
+click the link below:
+
+#{Site.base}#{Url.do_verify}/#{self.login}/#{self.verification}
+
+EOT
+
+    Pony.mail(
+              :to      => self.email,
+              :from    => Site.email,
+              :subject => "[kotoba.registration]",
+              :body    => body
+              )
+  end
 end
