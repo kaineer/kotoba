@@ -1,17 +1,4 @@
 #
-=begin
-require 'rack-flash'
-require 'lib/register'
-
-
-enable :sessions
-use Rack::Flash
-
-before do
-  Session.instance = session
-end
-=end
-
 get "/login" do
   @title = "Log in"
   haml :login
@@ -59,10 +46,32 @@ post "/verify" do
     @registration = UserRegistration.first( :email.eql => @register.email )
     @registration.send_verification
 
-    flash[ :success ] = "Created registration for email `#{@register.email}'"
+    flash[ :success ] = "Created registration for email `#{@register.email}'.<br/>Now, read your regisration email and finish registration."
     redirect Url.user
   else
     flash[ :error ] = "Could not create registration for login `#{@register.login}' and email `#{@register.email}'"
     redirect Url.register
   end
+end
+
+get "/do/verify/:login/:code" do
+  ur = UserRegistration.first( :login.eql => params[ :login ] )
+  if ur && ur.verification == params[ :code ]
+    ### TODO: What if someone made two registrations with same login
+    ###       and different emails?
+    new_user = User.create_with( ur.login, ur.password, ur.email, false )
+
+    ### NOTE: Remove all same-login registrations
+    UserRegistration.all( :login.eql => params[ :login ] ).each do |ur|
+      ur.destroy
+    end
+
+    User.current = new_user
+
+    flash[ :success ] = "Registration completed successfully."
+  else
+    flash[ :notice ] = "Somehow you could not finish your registration :("
+  end
+
+  redirect Url.user
 end
