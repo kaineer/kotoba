@@ -62,7 +62,7 @@ class User
   end
 
   def self.validate_username?( login )
-    return true if /^\w+$/ === login
+    return true if /^\w+(\.\w+)*$/ === login
     false
   end
 
