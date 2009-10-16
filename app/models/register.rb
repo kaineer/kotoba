@@ -6,7 +6,7 @@ class Register
     @repeat   = params[ :repeat ].to_s
   end
 
-  attr_reader :login
+  attr_reader :login, :email
   
   def password_verified?
     @password.to_s == @repeat.to_s
@@ -14,17 +14,5 @@ class Register
 
   def password
     password_verified? ? @password : nil
-  end
-
-  def email
-    case @email
-    when /^[-\w.]+$/ then "#{@email}@gmail.com"
-    when /^[-\w.]+@gmail\.com$/ then @email
-    else nil
-    end
-  end
-
-  def email_prefix
-    self.email.to_s[ /^[-\w.]+/ ]
   end
 end
