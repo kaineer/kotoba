@@ -20,4 +20,5 @@
         - if flash[:error]
           .span-24.last.error= flash[:error]
         = yield
-    /= Time.now - @time0
+    = Time.now - @time0
+    sec.
