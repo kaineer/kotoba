@@ -19,6 +19,7 @@ use Rack::Flash
 #
 before do
   Session.instance = session
+  @time0 = Time.now
 end
 
 load 'controllers.rb'
