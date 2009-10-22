@@ -18,7 +18,7 @@ class User
   def self.current
     user_id = self.current_id
 
-    user_id ? User.get!( self.current_id ) : nil
+    user_id ? User.get!( self.current_id, :include => :user_bookmarks ) : nil
   end
 
   def self.admin?
