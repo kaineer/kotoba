@@ -54,9 +54,24 @@ $( document ).ready( function() {
 
   $( "#bookmarks table tr:odd, #registrations table tr:odd" ).addClass( "odd" );
 
+  $( ".chapter-controls" ).hide();
+
+  $( ".chapter" ).hover(
+    function() { $( this ).find( ".chapter-controls" ).show(); },
+    function() { $( this ).find( ".chapter-controls" ).hide(); }
+  );
+
+  $( ".tango-controls" ).hide();
+
   $( ".tango" ).hover( 
-    function() { $( ".spoiler:not(.bookmarks .spoiler)" ).addClass( "visible" ); },
-    function() { $( ".spoiler:not(.bookmarks .spoiler)" ).removeClass( "visible" ); }
+    function() { 
+      $( ".spoiler:not(.bookmarks .spoiler)" ).addClass( "visible" );
+      $( ".tango-controls" ).show();
+    },
+    function() { 
+      $( ".spoiler:not(.bookmarks .spoiler)" ).removeClass( "visible" ); 
+      $( ".tango-controls" ).hide();
+    }
   );
 
   $( ".toggle" ).click( function() {

@@ -1,7 +1,20 @@
 .span-24.last.top-padded
   .span-18.colborder{:style=>'min-height: 400px;'}
     .span-18.tango.last
-      %h1= @tango.kanji
+      .span-16
+        %h1= @tango.kanji
+      .span-2.tango-controls.last.right
+        - if @tango.index > 0
+          %a{:href=>Url.tango( @tango.prev.index )}
+            %img.icon{:src=>"/images/arrow_left.png"}
+        - if @bookmarked
+          %a{:href=>Url.bookmark_unset( @tango.index )}
+            %img.icon{:src=>'/images/heart_delete.png', :title => "Remove bookmark"}
+        - else
+          %a{:href=>Url.bookmark_set( @tango.index )}
+            %img.icon{:src=>'/images/heart_add.png', :title => "Add bookmark", :style=>'margin: 2px;'}
+        %a{:href=>Url.tango( @tango.next.index )}
+          %img.icon{:src=>"/images/arrow_right.png"}
     .span-18.underline.last
       .span-3.right Meaning:
       .span-15.last.spoiler= @tango.meaning

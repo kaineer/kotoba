@@ -29,9 +29,9 @@ get "/tango/:id" do
   @tango = Tango[ params[ :id ].to_i ]
 
   @title = "Tango: #{@tango.kanji}"
+  Visited.store( @tango.index ) 
 
   @visited = Visited.ids
-  Visited.store( @tango.index ) 
 
   @bookmarks = []
 
@@ -40,6 +40,8 @@ get "/tango/:id" do
     score.update_attributes( :tango_id => @tango.index )
 
     @bookmarks = @user.user_bookmarks
+
+    @bookmarked = @bookmarks.find{|bkm|bkm.tango_id == @tango.index}
   end
 
   haml :tango

@@ -5,6 +5,10 @@
 .span-18.last.top-padded
   .span-18.last.chapter
     Bookmarks
+    %a{:href=>Url.print_bookmarks}
+      %img.chapter-controls.icon{:src=>'/images/printer.png', :title=>"Print bookmarks"}
+    %a{:href=>Url.clear_bookmarks}
+      %img.chapter-controls.icon{:src=>'/images/cross.png', :title => "Clear bookmarks"}
   .span-18.last.overline.underline
     .span-3.toggle.kanji
       .span-3.last Kanji
@@ -24,4 +28,4 @@
         .span-10.last= tango.meaning
       .span-1.last{:valign=>'middle'}
         %a{:href=>Url.bookmark_unset(bkm.tango_id),:title=>"Remove"}
-          %img{:src=>"/images/cross.png"}
+          %img.icon{:src=>"/images/cross.png"}

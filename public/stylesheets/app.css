@@ -183,3 +183,7 @@ table.print_bookmarks th {
   background-color: #eeeeee;
 }
 
+img.icon {
+  margin: 2px;
+  margin-bottom: 0px;
+}
