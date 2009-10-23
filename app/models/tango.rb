@@ -45,7 +45,11 @@ class Tango < OpenStruct
 
   def self.select_romaji( romaji )
     kana = Ream::Nihon::Kana.new( romaji )
-    select_kana( kana.to_s )
+    if kana.to_s.empty?
+      []
+    else
+      select_kana( kana.to_s ) 
+    end
   end
 
   def self.select_meaning( meaning )
