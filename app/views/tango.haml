@@ -7,12 +7,13 @@
         - if @tango.index > 0
           %a{:href=>Url.tango( @tango.prev.index )}
             %img.icon{:src=>"/images/arrow_left.png"}
-        - if @bookmarked
-          %a{:href=>Url.bookmark_unset( @tango.index )}
-            %img.icon{:src=>'/images/heart_delete.png', :title => "Remove bookmark"}
-        - else
-          %a{:href=>Url.bookmark_set( @tango.index )}
-            %img.icon{:src=>'/images/heart_add.png', :title => "Add bookmark", :style=>'margin: 2px;'}
+        - if User.current
+          - if @bookmarked
+            %a{:href=>Url.bookmark_unset( @tango.index )}
+              %img.icon{:src=>'/images/heart_delete.png', :title => "Remove bookmark"}
+          - else
+            %a{:href=>Url.bookmark_set( @tango.index )}
+              %img.icon{:src=>'/images/heart_add.png', :title => "Add bookmark", :style=>'margin: 2px;'}
         %a{:href=>Url.tango( @tango.next.index )}
           %img.icon{:src=>"/images/arrow_right.png"}
     .span-18.underline.last
