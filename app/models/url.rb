@@ -38,6 +38,10 @@ module Url
     webmail( "kaineer@gmail.com", "[kotoba.validation]", message )
   end
 
+  def self.search
+    "/search"
+  end
+
   def self.login
     "/login"
   end

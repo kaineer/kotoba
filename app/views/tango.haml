@@ -28,13 +28,3 @@
       = haml :bookmarks, :layout => false
   .span-5.last.sidebar
     =haml :sidebar, :layout => false
-
-
--#
-  #history
-    - @visited.each do |hid|
-      %span
-        -if @tango.index == hid
-          = @tango.kanji
-        -else
-          %a{:href=>Url.tango( hid )}= Tango[hid].kanji

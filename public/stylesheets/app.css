@@ -187,3 +187,7 @@ img.icon {
   margin: 2px;
   margin-bottom: 0px;
 }
+
+input.search {
+  height: 20px;
+}

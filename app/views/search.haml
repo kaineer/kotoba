@@ -1,0 +1,49 @@
+-#
+-#
+-#
+
+.span-24.last.top-padded
+  .span-18.colborder{:style=>'min-height: 400px;'}
+    - unless @romaji_search.empty?
+      .span-18.chapter.last
+        Romaji found
+      .span-18.overline.underline.last
+        .span-3.kanji
+          .span-3.last Kanji
+        .span-4.kana 
+          .span-4.last Reading
+        .span-10.meaning 
+          .span-10.last Meaning
+        .span-1.last
+      - @romaji_search.each do |tango|
+        .span-18.underline.last
+          .span-3.kanji
+            .span-3.last= tango.kanji
+          .span-4.kana 
+            .span-4.last= tango.kana
+          .span-10.meaning 
+            .span-10.last= tango.meaning
+          .span-1.last
+
+    - unless @meaning_search.empty?
+      .span-18.chapter.top-padded.last
+        Meaning found
+      .span-18.overline.underline.last
+        .span-3.kanji
+          .span-3.last Kanji
+        .span-4.kana 
+          .span-4.last Reading
+        .span-10.meaning 
+          .span-10.last Meaning
+        .span-1.last
+      - @meaning_search.each do |tango|
+        .span-18.underline.last
+          .span-3.kanji
+            .span-3.last= tango.kanji
+          .span-4.kana 
+            .span-4.last= tango.kana
+          .span-10.meaning 
+            .span-10.last= tango.meaning
+          .span-1.last
+  .span-5.last.sidebar
+    =haml :sidebar, :layout => false

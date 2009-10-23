@@ -47,6 +47,13 @@ get "/tango/:id" do
   haml :tango
 end
 
+post "/search" do
+  @search_string = params[ :q ].to_s
+  @romaji_search  = Tango.select_romaji( @search_string )
+  @meaning_search = Tango.select_meaning( @search_string )
+  haml :search
+end
+
 get "/" do
   redirect Url.user
 end

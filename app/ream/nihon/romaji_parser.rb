@@ -3,7 +3,7 @@
 # Author: kaineer
 #  Brief: Romaji parser
 #   Desc: This class incapsulates rules to parse romaji
-#         and returns array of kana keys: 
+#         and returns array of kana keys:
 #         for example 'shogun' --> %w( SHI yo GU N ),
 #---------------------------------------------------------------
 
@@ -90,11 +90,11 @@ module Ream
           end
         end
         res.stop!
-  
-        # Now it can be used        
+
+        # Now it can be used
         res
       end
-      
+
     protected
       # Container for single rule
       #
@@ -114,26 +114,26 @@ module Ream
       end
 
       # :nodoc: Describing rules here:
-      # 
+      #
       def self.rule( re, &block )
         @@rules << Rule.new( re, Proc.new( &block ) )
       end
 
       @@rules = []
-      
+
       # --- little vowels
       rule( /^X[AIUEO]/ ) {|pr|
         pr << pr[1, 1].downcase >> 2
       }
-      
+
       # --- little tsu
       rule( /^XTSU/ ) {|pr|
         pr << 'tsu' >> 4
       }
 
       # --- vowels
-      rule( /^[AIUEO]/ ) {|pr| 
-        pr << pr[0, 1] >> 1 
+      rule( /^[AIUEO]/ ) {|pr|
+        pr << pr[0, 1] >> 1
       }
 
       # --- : as U replacement
@@ -142,54 +142,58 @@ module Ream
       }
 
       # --- ki*n*youbi: not KI-NI-yo-BI, but KI-N-YO-BI
-      rule( /^N\'/ ) {|pr| 
-        pr << 'N' >> 2 
+      rule( /^N\'/ ) {|pr|
+        pr << 'N' >> 2
       }
 
       # --- kyo, rya, nyo etc.
-      rule( /^[KGNHBPMR]Y[AUO]/ ) {|pr| 
-        pr << pr[0, 1]+'I' << 'y'+pr[2, 1].downcase >> 3 
+      rule( /^[KGNHBPMR]Y[AUO]/ ) {|pr|
+        pr << pr[0, 1]+'I' << 'y'+pr[2, 1].downcase >> 3
       }
-      
+
       # --- n before not vowel
-      rule( /^N([^AIUEO]|\s|$)/ ) {|pr| 
-        pr << pr[0, 1] >> 1 
+      rule( /^N([^AIUEO]|\s|$)/ ) {|pr|
+        pr << pr[0, 1] >> 1
       }
-      
+
       # --- 3-letter's exceptions: chi, dzu, tsu
-      rule( /^([CS]HI|DZ[IU]|TSU)/ ) {|pr| 
-        pr << pr[0, 3] >> 3 
+      rule( /^([CS]HI|DZ[IU]|TSU)/ ) {|pr|
+        pr << pr[0, 3] >> 3
       }
-      
+
       # --- di-du, as in wakan
-      rule( /^D[IU]/ ) {|pr| 
+      rule( /^D[IU]/ ) {|pr|
         pr << "DZ" + pr[1,1] >> 2
       }
-      
+
       # --- sho --> SHI+yo
-      rule( /^[CS]H[AUO]/ ) {|pr| 
+      rule( /^[CS]H[AUO]/ ) {|pr|
         pr << pr[0, 2]+'I' << 'y'+pr[2, 1].downcase >> 3
       }
-      
+
       # --- ja --> JI+ya
-      rule( /^J[AUO]/ ) {|pr| 
+      rule( /^J[AUO]/ ) {|pr|
         pr << 'JI' << 'y' + pr[1,1].downcase >> 2
       }
-      
+
       # --- fi --> FU+i
-      rule( /^F[AIEO]/ ) {|pr| 
+      rule( /^F[AIEO]/ ) {|pr|
         pr << 'FU' << pr[ 1, 1 ].downcase >> 2
       }
-      
+
+      rule( /^FU/ ) {|pr|
+        pr << 'FU' >> 2
+      }
+
       # --- tsu on double consonant
       # C included for 'cchi'
-      rule( /^(TC|([CKGSZTDHBPMR])\2)/ ) {|pr| 
+      rule( /^(TC|([CKGSZTDHBPMR])\2)/ ) {|pr|
         pr << 'tsu' >> 1
       }
-      
+
       # --- all the rest
-      # TODO: remove some cases 2008-03-28 09:55:45 
-      rule( /^[KGSZTDNHBPMYRW][AIUEO]/ ) {|pr| 
+      # TODO: remove some cases 2008-03-28 09:55:45
+      rule( /^[KGSZTDNHBPMYRW][AIUEO]/ ) {|pr|
         pr << pr[0, 2] >> 2
       }
     end

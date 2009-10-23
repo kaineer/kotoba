@@ -15,14 +15,18 @@
   .span-5.last.item
     %a{:href=>Url.logout} Logout
 .span-5.last Tango
-- if @tango.index > 0
+- if @tango
+  - if @tango.index > 0
+    .span-5.last.item
+      %a{:href=>Url.tango( @tango.prev.index )} 
+        Previous
   .span-5.last.item
-    %a{:href=>Url.tango( @tango.prev.index )} 
-      Previous
+    %a{:href=>Url.tango( @tango.next.index )} 
+      Next
 .span-5.last.item
-  %a{:href=>Url.tango( @tango.next.index )} 
-    Next
-- if User.current
+  %form.instant{:action => Url.search, :method => 'POST'}
+    %input.search.span-3{:type=>"text", :name => "q"}
+- if User.current && @tango
   .span-5.last Bookmarks
   .span-5.last.item
     %a{:href=>Url.bookmark_set( @tango.index )} 
