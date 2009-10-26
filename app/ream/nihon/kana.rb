@@ -45,6 +45,12 @@ module Ream
         unparsed == string ? TryResult.failure( string ) : TryResult.success( unparsed )
       end
 
+      def self.scan( source )
+        arr = source.unpack( "U*" )
+        return :kanji if arr.find{|v| v > LAST_KANA }
+        :kana
+      end
+
     protected
       # Bases
       HIRAGANA = 12353
@@ -84,6 +90,8 @@ module Ream
         wa WA WI WE WO
         N
       ) )
+
+      LAST_KANA = KATAKANA + @@index.size
 
     end
   end
