@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 require 'ostruct'
-require 'ream/nihon/kana'
+require 'ream/nihon/text'
 
 class Tango < OpenStruct
   #
@@ -54,6 +54,28 @@ class Tango < OpenStruct
 
   def self.select_meaning( meaning )
     select_field( :meaning, meaning )
+  end
+
+  def self.select_by_source( source )
+    result = {}
+    @kana_result = @meaning_result = @kanji_result = nil
+    case Ream::Nihon::Text.scan( source )
+    when :romaji
+      @kana_result = select_romaji( source )
+      @meaning_result = select_meaning( source )
+    when :meaning
+      @meaning_result = select_meaning( source )
+    when :kana
+      @kana_result = select_kana( source )
+    when :kanji
+      @kanji_result = select_kanji( source )
+    end
+
+    result[ :kanji ]   = @kanji_result if @kanji_result && !@kanji_result.empty?
+    result[ :kana ]    = @kana_result if @kana_result && !@kana_result.empty?
+    result[ :meaning ] = @meaning_result if @meaning_result && !@meaning_result.empty?
+
+    result
   end
 end
 

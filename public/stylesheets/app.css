@@ -191,3 +191,23 @@ img.icon {
 input.search {
   height: 20px;
 }
+
+.header-row {
+  background-color: #DBEFF2;
+}
+
+.kyuu-4 {
+  background-color: #E7F2E9;
+}
+
+.kyuu-3 {
+  background-color: #E7EDF2;
+}
+
+.kyuu-2 {
+  background-color: #F2E7F0;
+}
+
+.kyuu-1 {
+  background-color: #F2E7E7;
+}

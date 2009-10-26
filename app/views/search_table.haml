@@ -1,0 +1,23 @@
+-#
+-# Search table
+-#
+
+.span-18.overline.underline.header-row.last
+  .span-3.kanji
+    .span-3.last Kanji
+  .span-4.kana 
+    .span-4.last Reading
+  .span-10.meaning 
+    .span-10.last Meaning
+  .span-1.last
+- @search_result[ @category ].each do |tango|
+  %div{:class=>"span-18 search-tango underline last kyuu-#{tango.jlpt}", :name=>tango.index}
+    .span-3.kanji
+      .span-3.last= tango.kanji
+    .span-4.kana 
+      .span-4.last= tango.kana
+    .span-10.meaning 
+      .span-10.last= tango.meaning
+    .span-1.search-bookmarked.last.right
+      - if @bookmarks.find {|bkm| bkm.tango_id == tango.index}
+        %img.icon{:src=>'/images/heart.png'}

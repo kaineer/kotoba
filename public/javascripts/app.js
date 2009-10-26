@@ -61,7 +61,7 @@ $( document ).ready( function() {
     function() { $( this ).find( ".chapter-controls" ).hide(); }
   );
 
-  $( ".tango-controls" ).hide();
+  // $( ".tango-controls" ).hide();
 
   $( ".tango" ).hover( 
     function() { 
@@ -87,4 +87,17 @@ $( document ).ready( function() {
       $( ".bookmarks ." + $toggleClass ).removeClass( "selected-column" );
     } 
   );
+
+  $( ".search-tango" ).click( function() {
+    $bookmarked = $( this ).find( ".search-bookmarked" );
+    $bookmarked.html(
+      "<img src='/images/loader.gif' alt='' />"
+    );
+    $.getJSON( "/bookmark/" + $( this ).attr( "name" ) + "/toggle", 
+	       function( data ) { 
+		 $bookmarked.html( data == 'Created' ? "<img src='/images/heart.png' class='icon' alt=''>" : "" );
+	       }
+	     );
+  } );
+  
 } );

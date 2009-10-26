@@ -48,12 +48,14 @@ get "/tango/:id" do
 end
 
 post "/search" do
+  @user = User.current
+  @bookmarks = @user.user_bookmarks
+
   @search_string = params[ :q ].to_s
   if @search_string.empty?
     redirect Url.user
   else
-    @romaji_search  = Tango.select_romaji( @search_string )
-    @meaning_search = Tango.select_meaning( @search_string )
+    @search_result = Tango.select_by_source( @search_string )
     haml :search
   end
 end

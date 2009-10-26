@@ -4,46 +4,24 @@
 
 .span-24.last.top-padded
   .span-18.colborder{:style=>'min-height: 400px;'}
-    - unless @romaji_search.empty?
-      .span-18.chapter.last
-        Romaji found
-      .span-18.overline.underline.last
-        .span-3.kanji
-          .span-3.last Kanji
-        .span-4.kana 
-          .span-4.last Reading
-        .span-10.meaning 
-          .span-10.last Meaning
-        .span-1.last
-      - @romaji_search.each do |tango|
-        .span-18.underline.last
-          .span-3.kanji
-            .span-3.last= tango.kanji
-          .span-4.kana 
-            .span-4.last= tango.kana
-          .span-10.meaning 
-            .span-10.last= tango.meaning
-          .span-1.last
 
-    - unless @meaning_search.empty?
+    - if @search_result[ :kanji ]
+      .span-18.chapter.last
+        Kanji found
+      - @category = :kanji
+      = haml( :search_table, :layout => false )
+
+    - if @search_result[ :kana ]
+      .span-18.chapter.top-padded.last
+        Kana found
+      - @category = :kana
+      = haml( :search_table, :layout => false )
+
+    - if @search_result[ :meaning ]
       .span-18.chapter.top-padded.last
         Meaning found
-      .span-18.overline.underline.last
-        .span-3.kanji
-          .span-3.last Kanji
-        .span-4.kana 
-          .span-4.last Reading
-        .span-10.meaning 
-          .span-10.last Meaning
-        .span-1.last
-      - @meaning_search.each do |tango|
-        .span-18.underline.last
-          .span-3.kanji
-            .span-3.last= tango.kanji
-          .span-4.kana 
-            .span-4.last= tango.kana
-          .span-10.meaning 
-            .span-10.last= tango.meaning
-          .span-1.last
+      - @category = :meaning
+      = haml( :search_table, :layout => false )
+
   .span-5.last.sidebar
     =haml :sidebar, :layout => false

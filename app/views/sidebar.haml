@@ -25,7 +25,7 @@
       Next
 .span-5.last.item
   %form.instant{:action => Url.search, :method => 'POST'}
-    %input.search.span-3{:type=>"text", :name => "q"}
+    %input.search.span-3{:type=>"text", :name => "q", :value => @search_string.to_s}
 - if User.current && @tango
   .span-5.last Bookmarks
   .span-5.last.item

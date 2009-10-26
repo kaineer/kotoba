@@ -12,6 +12,11 @@ get "/bookmark/:id/unset" do
   redirect Url.user
 end
 
+get "/bookmark/:id/toggle" do
+  code = User.current.toggle_mark( params[ :id ].to_i )
+
+  (code == :created ? "Created" : "Destroyed").inspect
+end
 
 get "/bookmarks/print" do
   @user = User.current

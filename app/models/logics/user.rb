@@ -93,6 +93,17 @@ class User
     end
   end
 
+  def toggle_mark( tango_id )
+    mark = self.user_bookmarks.first( :tango_id.eql => tango_id )
+    if mark
+      mark.destroy
+      return :removed
+    else
+      UserBookmark.create( :user_id => self.id, :tango_id => tango_id )
+      return :created
+    end
+  end
+
   def clear_bookmarks
     self.user_bookmarks.all.each do |bmk|
       bmk.destroy
