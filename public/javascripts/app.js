@@ -54,14 +54,10 @@ $( document ).ready( function() {
 
   $( "#bookmarks table tr:odd, #registrations table tr:odd" ).addClass( "odd" );
 
-  $( ".chapter-controls" ).hide();
-
   $( ".chapter" ).hover(
     function() { $( this ).find( ".chapter-controls" ).show(); },
     function() { $( this ).find( ".chapter-controls" ).hide(); }
-  );
-
-  // $( ".tango-controls" ).hide();
+  ).mousemove( function() { return false; } );
 
   $( ".tango" ).hover( 
     function() { 
@@ -72,7 +68,9 @@ $( document ).ready( function() {
       $( ".spoiler:not(.bookmarks .spoiler)" ).removeClass( "visible" ); 
       $( ".tango-controls" ).hide();
     }
-  );
+  ).mousemove( function() { return false; } );
+
+  $( "body" ).mousemove( function() { $( ".chapter-controls, .tango-controls" ).hide(); } )
 
   $( ".toggle" ).click( function() {
     var $toggleClass = $( this ).additionalClass( [ "kanji", "kana", "meaning" ] );
