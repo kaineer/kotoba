@@ -52,12 +52,19 @@ post "/search" do
   @bookmarks = @user.user_bookmarks
 
   @search_string = params[ :q ].to_s
+
   if @search_string.empty?
+    flash[ :notice ] = "Empty search string is not allowed"
     redirect Url.user
-  else
-    @search_result = Tango.select_by_source( @search_string )
-    haml :search
   end
+
+  @search_result = Tango.select_by_source( @search_string )
+  if @search_result.empty?
+    flash[ :notice ] = "There's nothing like `#{@search_string}'"
+    redirect Url.user
+  end
+
+  haml :search
 end
 
 get "/" do
