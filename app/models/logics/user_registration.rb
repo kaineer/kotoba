@@ -43,11 +43,16 @@ click the link below:
 
 EOT
 
+    config = MailConfiguration.config
+
     Pony.mail(
               :to      => self.email,
               :from    => Site.email,
               :subject => "[kotoba.registration]",
-              :body    => body
+              :body    => body,
+              :via     => config.via,
+              :smtp    => config.smtp
               )
   end
+  
 end
