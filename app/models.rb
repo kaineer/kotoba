@@ -77,7 +77,7 @@ module Models
       rescue Exception => e
         puts "WARNING: Can't perform config setup"
         puts "Filename: #{config_filename}"
-        # puts "Content: #{IO.read( config_filename )}"
+        puts "Content: #{content}"
         puts "----"
         puts e.inspect
         puts e.backtrace * $/
