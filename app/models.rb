@@ -70,13 +70,11 @@ module Models
 
     if File.exist?( config_filename )
       begin
-        database_config = YAML.load( content ).inject( {} ) do |hash, ( key, value )|
+        config_for_database = YAML.load( content ).inject( {} ) do |hash, ( key, value )|
           hash.merge( key.to_sym => value )
         end
-
-puts database_config.inspect
         
-        DataMapper.setup( :default, database_config )
+        DataMapper.setup( :default, config_for_database )
 
         return true
       rescue Exception => e
