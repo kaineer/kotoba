@@ -33,10 +33,10 @@ class UserRegistration
     body = <<EOT
 Hello, #{self.login}!
 
-You, (or another person) entered your email 
-into registration form at #{Site.base}#{Url.login}.
+You (or another person) has entered your email 
+into registration form at #{Site.base}#{Url.register}.
 
-If you still wish to proceed with your registration,
+If you still wish to proceed with your registration
 click the link below:
 
 #{Site.base}#{Url.do_verify}/#{self.login}/#{self.verification}
