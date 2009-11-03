@@ -75,6 +75,7 @@ module Models
         return true
       rescue Exception => e
         puts "WARNING: Can't perform config setup"
+        puts "Filename: #{config_filename}"
         puts e.inspect
         puts e.backtrace * $/
 
