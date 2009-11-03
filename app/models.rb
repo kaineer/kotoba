@@ -64,7 +64,9 @@ module Models
   def self.config_datamapper_startup
     config_filename = File.join( File.dirname( __FILE__ ), "../config/database.yml" )
     content = IO.read( config_filename )
-    puts content.inspect
+    
+    ### DEBUG
+    files = Dir[ "../config/*" ]
 
     if File.exist?( config_filename )
       begin
@@ -76,6 +78,8 @@ module Models
 
         return true
       rescue Exception => e
+        puts files.inspect
+
         puts "WARNING: Can't perform config setup"
         puts "Filename: #{config_filename}"
         puts "Content: #{content}"
