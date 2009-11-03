@@ -73,6 +73,8 @@ module Models
         config_for_database = YAML.load( content ).inject( {} ) do |hash, ( key, value )|
           hash.merge( key.to_sym => value )
         end
+
+        return nil if hash[ :encoding ]
         
         DataMapper.setup( :default, config_for_database )
 
