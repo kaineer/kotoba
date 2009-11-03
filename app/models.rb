@@ -63,10 +63,11 @@ module Models
 
   def self.config_datamapper_startup
     config_filename = File.join( File.dirname( __FILE__ ), "../config/database.yml" )
+    content = IO.read( config_filename )
 
     if File.exist?( config_filename )
       begin
-        database_config = YAML.load_file( config_filename ).inject( {} ) do |hash, ( key, value )|
+        database_config = YAML.load( content ).inject( {} ) do |hash, ( key, value )|
           hash.merge( key.to_sym => value )
         end
         
