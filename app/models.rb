@@ -98,7 +98,7 @@ module Models
 
   def self.in_memory_logic
     require_from( "models", 
-         %w( tango visited words session url register site ) )
+         %w( tango visited words session url register site mail_configuration ) )
   end
 
   def self.load_logic
