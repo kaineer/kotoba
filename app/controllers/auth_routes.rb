@@ -45,7 +45,9 @@ post "/verify" do
       @title = "Verification"
 
       @registration = UserRegistration.first( :email.eql => @register.email )
-      @registration.send_verification
+      unless @registration.send_verification
+        flash[ :notice ] = "Could not send email to `#{@register.email}'"
+      end
 
       flash[ :success ] = "Created registration for email `#{@register.email}'.<br/>Now, read your regisration email and finish registration."
       redirect Url.user

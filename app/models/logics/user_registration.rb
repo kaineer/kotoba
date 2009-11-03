@@ -43,14 +43,21 @@ click the link below:
 
 EOT
 
-    Pony.mail(
-              :to      => self.email,
-              :from    => Site.email,
-              :subject => "[kotoba.registration]",
-              :body    => body,
-              :via     => Site.via,
-              :smtp    => Site.smtp
-              )
+    result = true
+    begin
+      Pony.mail(
+                :to      => self.email,
+                :from    => Site.email,
+                :subject => "[kotoba.registration]",
+                :body    => body,
+                :via     => Site.via,
+                :smtp    => Site.smtp
+                )
+    rescue Exception => e
+      result = false
+    end
+
+    result
   end
   
 end

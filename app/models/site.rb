@@ -21,14 +21,17 @@ class Site
   end
 
   def self.base
+    ensure_init
     @@config[ "base" ] || "http://kotoba.heroku.com"
   end
   
   def self.email
+    ensure_init
     @@config[ "email" ] || "noreply@please.com"
   end
 
   def self.via
+    ensure_init
     @@config[ "via" ] || "smtp"
   end
 
@@ -41,6 +44,8 @@ class Site
   }
 
   def self.smtp
+    ensure_init
+
     return nil if via == "sendmail"
 
     @@config[ "smtp" ].inject( {} ) do |hash, ( key, value ) |

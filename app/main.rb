@@ -49,7 +49,7 @@ end
 
 post "/search" do
   @user = User.current
-  @bookmarks = @user.user_bookmarks
+  @bookmarks = @user.user_bookmarks rescue []
 
   @search_string = params[ :q ].to_s
 
