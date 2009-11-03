@@ -1,7 +1,7 @@
 #
 #
 #
-base: "http://domain.name.com"
+Base: "http://domain.name.com"
 email: "void@email.ru"
 via: sendmail                    # sendmail | smtp
 
