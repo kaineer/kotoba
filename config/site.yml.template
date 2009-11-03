@@ -1,5 +1,12 @@
 #
 #
 #
-base: "http://toheen.ru:4567"
+base: "http://domain.name.com"
+email: "void@email.ru"
+via: sendmail                    # sendmail | smtp
 
+# host: smtp.sendgrid.com
+# port: '25'
+# user: 'username'
+# password: 'secret'
+# domain: your.domain.name
