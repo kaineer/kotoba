@@ -40,17 +40,23 @@ post "/verify" do
   @register = Register.new( params )
   @registration = nil
   
-  if UserRegistration.create_from( @register )
-    @title = "Verification"
+  begin
+    if UserRegistration.create_from( @register )
+      @title = "Verification"
 
-    @registration = UserRegistration.first( :email.eql => @register.email )
-    @registration.send_verification
+      @registration = UserRegistration.first( :email.eql => @register.email )
+      @registration.send_verification
 
-    flash[ :success ] = "Created registration for email `#{@register.email}'.<br/>Now, read your regisration email and finish registration."
+      flash[ :success ] = "Created registration for email `#{@register.email}'.<br/>Now, read your regisration email and finish registration."
+      redirect Url.user
+    else
+      flash[ :error ] = "Could not create registration for login `#{@register.login}' and email `#{@register.email}'"
+      redirect Url.register
+    end
+  rescue Exception => e
+    puts e.inspect
+    puts e.backtrace * $/
     redirect Url.user
-  else
-    flash[ :error ] = "Could not create registration for login `#{@register.login}' and email `#{@register.email}'"
-    redirect Url.register
   end
 end
 

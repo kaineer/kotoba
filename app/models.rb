@@ -65,27 +65,20 @@ module Models
     config_filename = File.join( File.dirname( __FILE__ ), "../config/database.yml" )
     content = IO.read( config_filename )
     
-    ### DEBUG
-    files = Dir[ "../config/*" ]
-
     if File.exist?( config_filename )
       begin
         config_for_database = YAML.load( content ).inject( {} ) do |hash, ( key, value )|
           hash.merge( key.to_sym => value )
         end
 
+        ### NOTE: Out of DESPAIR.
         return nil if hash[ :encoding ]
         
         DataMapper.setup( :default, config_for_database )
 
         return true
       rescue Exception => e
-        puts files.inspect
-
         puts "WARNING: Can't perform config setup"
-        puts "Filename: #{config_filename}"
-        puts "Content: #{content}"
-        puts "----"
         puts e.inspect
         puts e.backtrace * $/
 
