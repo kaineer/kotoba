@@ -64,6 +64,7 @@ module Models
   def self.config_datamapper_startup
     config_filename = File.join( File.dirname( __FILE__ ), "../config/database.yml" )
     content = IO.read( config_filename )
+    puts content.inspect
 
     if File.exist?( config_filename )
       begin
