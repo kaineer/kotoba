@@ -19,5 +19,5 @@
     .span-10.meaning 
       .span-10.last= tango.meaning
     .span-1.search-bookmarked.last.right
-      - if @bookmarks.find {|bkm| bkm.tango_id == tango.index}
+      - if User.current && @bookmarks.find {|bkm| bkm.tango_id == tango.index}
         %img.icon{:src=>'/images/heart.png'}
